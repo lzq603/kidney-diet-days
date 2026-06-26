@@ -1,0 +1,193 @@
+<!-- pages/index/index.wxml — 极简首页：保留一个 AI 输入框作为核心入口 -->
+<view class="page">
+
+  <!-- AI 对话主区：默认像 ChatGPT/DeepSeek 一样只有一个核心输入框，展开后进入全屏对话 -->
+  <view class="ai-panel {{chatExpanded ? 'ai-panel-expanded ai-fullscreen' : ''}}">
+    <view class="ai-head" wx:if="{{chatExpanded}}">
+      <view class="ai-avatar">小</view>
+      <view class="ai-info">
+        <view class="ai-title-row">
+          <text class="ai-title">小光营养顾问</text>
+          <view class="online-dot {{isConnected ? '' : 'offline-dot'}}"></view>
+          <text class="online-text">{{isConnected ? '在线' : (reconnecting ? '重连中' : '连接中')}}</text>
+        </view>
+        <text class="ai-desc">可查看报告、今日饮食和菜谱库。</text>
+      </view>
+      <view class="ai-actions">
+        <view class="clear-btn" bindtap="onClearChat">清空</view>
+        <view class="collapse-btn" bindtap="onCollapseChat">收起</view>
+      </view>
+    </view>
+
+    <view class="hero" wx:if="{{!chatExpanded}}">
+      <text class="hero-title">今天想问点什么？</text>
+      <text class="hero-subtitle">报告、饮食、食材、菜谱，都可以直接问小光</text>
+    </view>
+
+    <!-- 展开的对话流 -->
+    <scroll-view wx:if="{{chatExpanded}}" class="chat-box" scroll-y scroll-into-view="{{scrollIntoView}}" scroll-with-animation>
+      <block wx:if="{{messages.length === 0}}">
+        <view class="empty-chat">
+          <text class="empty-chat-text">你可以直接问我：今天还能吃什么？检查报告哪里异常？</text>
+        </view>
+      </block>
+
+      <block wx:for="{{messages}}" wx:key="index">
+        <view class="msg-row {{item.role === 'user' ? 'msg-user' : 'msg-ai'}}">
+          <view class="msg-bubble user-bubble" wx:if="{{item.role === 'user'}}">
+            <text>{{item.text}}</text>
+          </view>
+          <view class="msg-bubble ai-bubble" wx:if="{{item.role === 'assistant'}}">
+            <view wx:if="{{!item.done && !item.streamText}}" class="loading-dots">
+              <view class="dot"></view><view class="dot"></view><view class="dot"></view>
+            </view>
+            <text wx:if="{{item.streamText}}">{{item.streamText}}</text>
+            <text wx:if="{{item.done && item.text}}">{{item.text}}</text>
+            <text wx:if="{{!item.done && item.streamText}}" class="cursor">▌</text>
+
+            <view class="simple-card" wx:for="{{item.cards}}" wx:for-item="card" wx:key="index">
+              <!-- 检查报告卡 -->
+              <view wx:if="{{card.type === 'report_indicator_card'}}" class="home-report-card card-tappable" bindtap="onReportCardTap" data-report-id="{{card.data.report_id}}">
+                <view class="card-title-row">
+                  <text class="card-title">📋 检查报告</text>
+                  <text class="card-date">{{card.data.report_date}}</text>
+                </view>
+                <view class="report-grid">
+                  <view class="report-item" wx:for="{{card.data.indicators}}" wx:for-item="ind" wx:key="key">
+                    <text class="report-label">{{ind.label}}</text>
+                    <text class="report-value">{{ind.value}}{{ind.unit}}</text>
+                    <text class="report-eval {{ind.eval === '正常' ? 'eval-ok' : 'eval-warn'}}">{{ind.eval}}</text>
+                  </view>
+                </view>
+                <view class="card-footer" wx:if="{{card.data.abnormal_count > 0}}">⚠️ {{card.data.abnormal_count}} 项异常，点击查看完整报告</view>
+                <view class="card-footer" wx:else>点击查看完整报告</view>
+              </view>
+
+              <!-- 今日营养卡 -->
+              <view wx:if="{{card.type === 'nutrition_today_card'}}" class="home-nutrition-card card-tappable" bindtap="onNutritionTodayTap">
+                <view class="card-title-row">
+                  <text class="card-title">🍱 今日摄入</text>
+                  <text class="card-date">{{card.data.date}}</text>
+                </view>
+                <view class="nutrition-topline">
+                  <view><text class="big-num">{{card.data.calories}}</text><text class="unit-text">kcal</text></view>
+                  <view><text class="big-num protein-num">{{card.data.protein}}</text><text class="unit-text">g 蛋白质</text></view>
+                </view>
+                <view class="usage-row" wx:for="{{['potassium','phosphorus','sodium']}}" wx:for-item="uk" wx:key="*this">
+                  <text class="usage-name">{{uk === 'potassium' ? '钾' : (uk === 'phosphorus' ? '磷' : '钠')}}</text>
+                  <view class="usage-track"><view class="usage-fill" style="width: {{card.data.usage[uk].pct > 100 ? 100 : card.data.usage[uk].pct}}%;"></view></view>
+                  <text class="usage-value">{{card.data.usage[uk].pct}}%</text>
+                </view>
+                <view class="card-footer">已记录 {{card.data.meal_count}} 餐，点击查看详情</view>
+              </view>
+
+              <!-- 食物安全卡 -->
+              <view wx:if="{{card.type === 'food_safety_card'}}" class="home-food-card card-tappable" bindtap="onFoodSafetyTap" data-food-id="{{card.data.food_id}}" data-food-name="{{card.data.name}}">
+                <view class="card-title-row">
+                  <text class="card-title">🥗 {{card.data.name}}</text>
+                  <text class="safe-badge safe-{{card.data.safe_level}}">{{card.data.safe_label}}</text>
+                </view>
+                <view class="nutrient-grid">
+                  <view><text class="nutrient-num">{{card.data.nutrition.potassium}}</text><text class="nutrient-label">钾mg</text></view>
+                  <view><text class="nutrient-num">{{card.data.nutrition.phosphorus}}</text><text class="nutrient-label">磷mg</text></view>
+                  <view><text class="nutrient-num">{{card.data.nutrition.sodium}}</text><text class="nutrient-label">钠mg</text></view>
+                  <view><text class="nutrient-num">{{card.data.nutrition.protein}}</text><text class="nutrient-label">蛋白g</text></view>
+                </view>
+                <view class="card-tip" wx:if="{{card.data.tip}}">💡 {{card.data.tip}}</view>
+              </view>
+
+              <!-- 食谱卡片：恢复旧“问小光”可点击查看做法的卡片效果 -->
+              <view wx:if="{{card.type === 'recipe_card'}}" class="card-recipe card-tappable" catchtap="onRecipeCardTap" data-name="{{card.data.name}}" data-recipe-id="{{card.data.recipe_id}}">
+                <view class="card-recipe-header">
+                  <text class="card-recipe-name">🍽 {{card.data.name}}</text>
+                  <view class="safe-badge safe-{{card.data.safe_level}}">
+                    <text>{{card.data.safe_label}}</text>
+                  </view>
+                </view>
+                <view class="card-nutrients" wx:if="{{card.data.key_nutrients}}">
+                  <view class="nutrient-item" wx:for="{{card.data.key_nutrients}}" wx:key="name" wx:for-item="n">
+                    <text class="nutrient-name">{{n.name}}</text>
+                    <text class="nutrient-val">{{n.value}}</text>
+                    <text class="nutrient-eval eval-{{n.eval === '高' || n.eval === '偏高' ? 'danger' : (n.eval === '适中' ? 'warning' : 'safe')}}">{{n.eval}}</text>
+                  </view>
+                </view>
+                <view class="card-tip-row" wx:if="{{card.data.tip}}">
+                  <text class="card-tip-icon">💡</text>
+                  <text class="card-tip-text">{{card.data.tip}}</text>
+                </view>
+                <view class="card-action-row">
+                  <text class="card-action-text">点击查看详细做法 →</text>
+                </view>
+              </view>
+
+              <!-- 商品卡 -->
+              <view wx:if="{{card.type === 'product_card'}}" class="home-product-card card-tappable" bindtap="onProductCardTap" data-product-id="{{card.data.product_id}}">
+                <view class="product-main">
+                  <image class="product-img" wx:if="{{card.data.image}}" src="{{card.data.image}}" mode="aspectFill"></image>
+                  <view class="product-info">
+                    <text class="product-name">{{card.data.name}}</text>
+                    <text class="product-desc">{{card.data.desc}}</text>
+                    <text class="product-price">¥{{card.data.price}}</text>
+                  </view>
+                </view>
+              </view>
+
+              <!-- 提醒/技巧卡 -->
+              <view wx:if="{{card.type === 'warning_card'}}" class="warning-card">
+                <text class="warning-title">{{card.data.title}}</text>
+                <text class="warning-content">{{card.data.content}}</text>
+              </view>
+              <view wx:if="{{card.type === 'tip_card'}}" class="tip-card">
+                <text class="tip-title">{{card.data.icon || '💡'}} {{card.data.title}}</text>
+                <text class="tip-content">{{card.data.content}}</text>
+              </view>
+              <view wx:if="{{card.type === 'suggest_questions'}}" class="suggest-card">
+                <view class="suggest-item" wx:for="{{card.data.questions}}" wx:for-item="q" wx:key="index" bindtap="onSuggestTap" data-question="{{q}}">
+                  <text>{{q}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view id="home-msg-bottom" style="height: 16rpx;"></view>
+    </scroll-view>
+
+    <!-- DeepSeek 式输入框 -->
+    <view class="ask-box">
+      <input
+        class="ask-input"
+        placeholder="问小光任何肾友饮食问题"
+        placeholder-class="ask-placeholder"
+        value="{{inputText}}"
+        bindinput="onInputChange"
+        bindfocus="onFocusChatInput"
+        bindconfirm="onSendTap"
+        confirm-type="send"
+      />
+      <view class="send-circle" bindtap="onSendTap">
+        <text class="send-arrow">{{isStreaming ? '…' : '↑'}}</text>
+      </view>
+    </view>
+
+    <!-- 恢复饮食记录固定入口：保持首页极简，但让记录页可直接进入 -->
+    <view class="quick-examples" wx:if="{{!chatExpanded}}">
+      <view class="example-title">试试这些问题</view>
+      <view class="example-list">
+        <view class="example-item" wx:for="{{quickExamples}}" wx:key="index" bindtap="onChipTap" data-q="{{item.q}}">
+          <text class="example-text">{{item.text}}</text>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+
+  <view class="subtle-profile">
+    <text bindtap="onGoProfile">CKD {{ckdStage}}期</text>
+    <text wx:if="{{isVip}}" bindtap="onGoVip"> · VIP</text>
+    <!-- <text wx:else bindtap="onGoVip" style="color: #FFD700;"> · 开通会员</text> -->
+    <text bindtap="onGoProfile"> · 我的 ›</text>
+  </view>
+
+</view>

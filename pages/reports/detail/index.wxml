@@ -1,0 +1,31 @@
+<!-- pages/reports/detail/index.wxml -->
+<view class="page">
+  <view class="loading-tip" wx:if="{{loading}}">加载中...</view>
+
+  <block wx:else>
+    <view class="report-header" wx:if="{{report}}">
+      <text class="report-date">📅 {{report.report_date || '未知日期'}}</text>
+      <text class="report-source">AI 自动识别</text>
+    </view>
+
+    <view class="indicator-list">
+      <view class="indicator-item" wx:for="{{indicators}}" wx:key="key">
+        <view class="indicator-left">
+          <text class="indicator-label">{{item.label}}</text>
+          <text class="indicator-ref">参考范围：{{item.refRange}}</text>
+        </view>
+        <view class="indicator-right">
+          <text class="indicator-value">{{item.value}}</text>
+          <text class="indicator-unit">{{item.unit}}</text>
+          <text class="indicator-eval" style="color: {{item.evalColor}}">{{item.eval}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:if="{{indicators.length === 0}}">
+      <text>未识别到有效指标，请检查图片是否清晰</text>
+    </view>
+
+    <button class="delete-btn" bindtap="onDelete" wx:if="{{report}}">删除此报告</button>
+  </block>
+</view>

@@ -1,0 +1,230 @@
+<!-- pages/profile/index/index.wxml - 个人中心 -->
+<view class="page-wrap">
+
+  <!-- 用户信息头部 -->
+  <view class="profile-header">
+    <view class="avatar-wrap">
+      <view class="avatar">{{nickInitial}}</view>
+    </view>
+    <view class="user-info">
+      <view class="nickname">{{nickname}}</view>
+      <view class="stage-tag">{{stageName}}</view>
+      <view class="body-tags" wx:if="{{bmi || editHeightCm}}">
+        <text class="body-tag" wx:if="{{editHeightCm}}">{{editHeightCm}}cm</text>
+        <text class="body-tag" wx:if="{{editWeightKg}}">{{editWeightKg}}kg</text>
+        <text class="body-tag bmi-tag" wx:if="{{bmi}}">BMI {{bmi}}</text>
+      </view>
+    </view>
+    <view class="edit-btn" bindtap="openSettings">编辑</view>
+  </view>
+
+  <!-- 设置项 -->
+  <view class="settings-section">
+
+    <!-- 个人设置 -->
+    <view class="settings-group">
+      <view class="settings-group-title">个人设置</view>
+      <view class="settings-list card" style="padding:0">
+
+        <view class="settings-item" bindtap="openSettings">
+          <view class="si-left flex">
+            <view class="si-icon">👤</view>
+            <view class="si-label">个人信息设置</view>
+          </view>
+          <view class="si-right flex">
+            <view class="si-value text-secondary text-sm">{{nickname}} · {{stageName}}{{ckdTypeName ? ' · ' + ckdTypeName : ''}}</view>
+            <view class="si-arrow">›</view>
+          </view>
+        </view>
+
+        <view class="settings-item" bindtap="showStageSelect">
+          <view class="si-left flex">
+            <view class="si-icon">🏥</view>
+            <view class="si-label">肾功能分期</view>
+          </view>
+          <view class="si-right flex">
+            <view class="si-value text-secondary text-sm">{{stageName}}</view>
+            <view class="si-arrow">›</view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <!-- 使用功能 -->
+    <view class="settings-group">
+      <view class="settings-group-title">使用功能</view>
+      <view class="settings-list card" style="padding:0">
+
+        <view class="settings-item" bindtap="goReports">
+          <view class="si-left flex">
+            <view class="si-icon">📋</view>
+            <view class="si-label">我的检查报告</view>
+          </view>
+          <view class="si-right flex">
+            <view class="si-arrow">›</view>
+          </view>
+        </view>
+
+        <view class="settings-item" bindtap="goDietRecords">
+          <view class="si-left flex">
+            <view class="si-icon">🍱</view>
+            <view class="si-label">饮食记录</view>
+          </view>
+          <view class="si-right flex">
+            <view class="si-arrow">›</view>
+          </view>
+        </view>
+
+
+        <view class="settings-item" bindtap="viewHelp">
+          <view class="si-left flex">
+            <view class="si-icon">📖</view>
+            <view class="si-label">使用帮助</view>
+          </view>
+          <view class="si-right flex">
+            <view class="si-arrow">›</view>
+          </view>
+        </view>
+
+        <view class="settings-item" bindtap="viewDisclaimer">
+          <view class="si-left flex">
+            <view class="si-icon">⚕️</view>
+            <view class="si-label">医疗免责声明</view>
+          </view>
+          <view class="si-right flex">
+            <view class="si-arrow">›</view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+    <!-- 系统 -->
+    <view class="settings-group">
+      <view class="settings-group-title">系统</view>
+      <view class="settings-list card" style="padding:0">
+
+        <view class="settings-item" bindtap="clearCache">
+          <view class="si-left flex">
+            <view class="si-icon">🗑️</view>
+            <view class="si-label">清除记录</view>
+          </view>
+          <view class="si-right flex">
+            <view class="si-value text-secondary text-sm">{{cacheSize}}</view>
+            <view class="si-arrow">›</view>
+          </view>
+        </view>
+
+        <view class="settings-item" bindtap="showAbout">
+          <view class="si-left flex">
+            <view class="si-icon">ℹ️</view>
+            <view class="si-label">关于肾友食光</view>
+          </view>
+          <view class="si-right flex">
+            <view class="si-value text-secondary text-sm">v1.0.0</view>
+            <view class="si-arrow">›</view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 个人设置弹窗 -->
+  <view class="modal-mask" wx:if="{{showSettings}}" bindtap="closeSettings">
+    <view class="modal-content settings-modal" catchtap="stopPropagation">
+      <view class="modal-title">个人信息设置</view>
+
+      <view class="form-scroll">
+        <view class="form-item">
+          <view class="form-label">昵称</view>
+          <input
+            class="form-input"
+            placeholder="请输入昵称"
+            value="{{editNickname}}"
+            bindinput="onNicknameInput"
+            maxlength="12"
+          />
+        </view>
+
+        <view class="form-item">
+          <view class="form-label">性别</view>
+          <view class="gender-grid">
+            <view
+              class="gender-option {{editGender === genderValues[index] ? 'active' : ''}}"
+              wx:for="{{genderOptions}}"
+              wx:key="index"
+              catchtap="selectEditGender"
+              data-value="{{genderValues[index]}}"
+            >{{item}}</view>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <view class="form-label">肾功能分期</view>
+          <view class="stage-grid">
+            <view
+              class="stage-option {{editStage === item.value ? 'active' : ''}}"
+              wx:for="{{stages}}"
+              wx:key="value"
+              catchtap="selectEditStage"
+              data-value="{{item.value}}"
+            >{{item.label}}</view>
+          </view>
+        </view>
+
+        <view class="form-item">
+          <view class="form-label">肾病类型</view>
+          <picker mode="selector" range="{{ckdTypes}}" range-key="label" value="{{ckdTypeIndex}}" bindchange="onCkdTypeChange">
+            <view class="picker-input">
+              {{editCkdType ? ckdTypes[ckdTypeIndex].label : '请选择肾病类型'}}
+            </view>
+          </picker>
+        </view>
+
+        <view class="form-row-2col">
+          <view class="form-item form-item-half">
+            <view class="form-label">身高 (cm)</view>
+            <input
+              class="form-input"
+              type="digit"
+              placeholder="如 170"
+              value="{{editHeightCm}}"
+              bindinput="onHeightInput"
+            />
+          </view>
+          <view class="form-item form-item-half">
+            <view class="form-label">体重 (kg)</view>
+            <input
+              class="form-input"
+              type="digit"
+              placeholder="如 65"
+              value="{{editWeightKg}}"
+              bindinput="onWeightInput"
+            />
+          </view>
+        </view>
+
+        <view class="form-item">
+          <view class="form-label">出生年份</view>
+          <input
+            class="form-input"
+            type="number"
+            placeholder="如 1985"
+            value="{{editBirthYear}}"
+            bindinput="onBirthYearInput"
+            maxlength="4"
+          />
+        </view>
+      </view>
+
+      <view class="modal-btns flex" style="margin-top:32rpx">
+        <button class="modal-btn-cancel" catchtap="closeSettings">取消</button>
+        <button class="modal-btn-ai" catchtap="saveSettings">保存</button>
+      </view>
+    </view>
+  </view>
+
+</view>

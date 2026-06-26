@@ -1,0 +1,371 @@
+<!-- pages/chat/index/index.wxml -->
+<view class="chat-page">
+
+  <!-- 配额提示条（非VIP且配额不足时显示） -->
+  <view class="quota-bar" wx:if="{{showQuotaTip}}">
+    <text class="quota-bar-text">📛 今日 AI 对话次数已用完（3次/天）</text>
+    <text class="quota-bar-btn" bindtap="onGoVip">加入会员 →</text>
+  </view>
+
+  <!-- 对话配额剩余提示（非VIP时显示，对话独立3次/天） -->
+  <view class="quota-remaining-bar" wx:if="{{!isVip && chatRemaining >= 0 && !showQuotaTip}}">
+    <text class="qr-text">今日 AI 对话 {{chatRemaining >= 0 ? (3 - chatRemaining) : '?'}}/{{3}}</text>
+    <view class="qr-progress">
+      <view class="qr-fill" style="width: {{((3 - chatRemaining) / 3 * 100)}}%;"></view>
+    </view>
+    <text class="qr-link" bindtap="onGoVip">加入会员 解锁无限次</text>
+  </view>
+
+  <!-- 顶部 Topbar -->
+  <view class="chat-topbar">
+    <view class="topbar-left">
+      <view class="avatar-wrap">
+        <text class="avatar-emoji">🩺</text>
+      </view>
+      <view class="topbar-info">
+        <text class="topbar-name">小光营养顾问</text>
+        <view class="topbar-status">
+          <view class="status-dot {{isConnected ? 'online' : (reconnecting ? 'reconnecting' : 'offline')}}"></view>
+          <text class="status-text">{{isConnected ? '在线' : (reconnecting ? '重连中...' : '连接中...')}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="topbar-stage">
+      <text class="stage-badge">CKD {{ckdStage}}期</text>
+    </view>
+  </view>
+
+  <!-- 消息列表 -->
+  <scroll-view
+    class="msg-list"
+    scroll-y
+    scroll-into-view="{{scrollIntoView}}"
+    scroll-with-animation
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <view class="msg-list-inner">
+      <block wx:for="{{messages}}" wx:key="index">
+        <view id="msg-{{index}}" class="msg-row {{item.role === 'user' ? 'msg-row-user' : 'msg-row-ai'}}">
+
+          <!-- AI 头像 -->
+          <view class="msg-avatar" wx:if="{{item.role === 'assistant'}}">
+            <text class="msg-avatar-emoji">🩺</text>
+          </view>
+
+          <view class="msg-content-wrap">
+
+            <!-- ① 用户消息气泡 -->
+            <view class="bubble-user" wx:if="{{item.role === 'user'}}">
+              <text class="bubble-user-text">{{item.text}}</text>
+            </view>
+
+            <!-- ② AI 加载三点（未收到任何文字时） -->
+            <view class="bubble-ai bubble-loading"
+              wx:if="{{item.role === 'assistant' && !item.done && !item.streamText}}">
+              <view class="loading-dots">
+                <view class="dot dot1"></view>
+                <view class="dot dot2"></view>
+                <view class="dot dot3"></view>
+              </view>
+            </view>
+
+            <!-- ③ AI 流式文字（流式阶段，带打字光标） -->
+            <view class="bubble-ai bubble-typing"
+              wx:if="{{item.role === 'assistant' && item.streamText}}">
+              <text class="bubble-text">{{item.streamText}}</text>
+              <view class="typing-cursor" wx:if="{{!item.done}}"></view>
+            </view>
+
+            <!-- ④ AI 最终文字（流式结束后，streamText 已清空转为 text） -->
+            <view class="bubble-ai"
+              wx:if="{{item.role === 'assistant' && item.done && item.text}}">
+              <text class="bubble-text">{{item.text}}</text>
+            </view>
+
+            <!-- ⑤ 卡片列表（第二阶段逐张追加，紧接在文字下方） -->
+            <block wx:if="{{item.role === 'assistant'}}"
+              wx:for="{{item.cards}}" wx:key="index"
+              wx:for-item="card" wx:for-index="ci">
+
+              <!-- 食谱卡片 -->
+              <view class="card-recipe card-tappable"
+                wx:if="{{card.type === 'recipe_card'}}"
+                catchtap="onRecipeCardTap"
+                data-name="{{card.data.name}}">
+                <view class="card-recipe-header">
+                  <text class="card-recipe-name">🍽 {{card.data.name}}</text>
+                  <view class="safe-badge safe-{{card.data.safe_level}}">
+                    <text>{{card.data.safe_label}}</text>
+                  </view>
+                </view>
+                <view class="card-nutrients" wx:if="{{card.data.key_nutrients}}">
+                  <view class="nutrient-item"
+                    wx:for="{{card.data.key_nutrients}}" wx:key="name" wx:for-item="n">
+                    <text class="nutrient-name">{{n.name}}</text>
+                    <text class="nutrient-val">{{n.value}}</text>
+                    <text class="nutrient-eval eval-{{n.eval === '高' ? 'danger' : (n.eval === '适中' ? 'warning' : 'safe')}}">{{n.eval}}</text>
+                  </view>
+                </view>
+                <view class="card-tip-row" wx:if="{{card.data.tip}}">
+                  <text class="card-tip-icon">💡</text>
+                  <text class="card-tip-text">{{card.data.tip}}</text>
+                </view>
+                <view class="card-action-row">
+                  <text class="card-action-text">点击查看详细分析 →</text>
+                </view>
+              </view>
+
+              <!-- 警告卡 -->
+              <view class="card-warning" wx:if="{{card.type === 'warning_card'}}">
+                <text class="card-warning-title">{{card.data.title}}</text>
+                <text class="card-warning-content">{{card.data.content}}</text>
+              </view>
+
+              <!-- 技巧卡 -->
+              <view class="card-tip" wx:if="{{card.type === 'tip_card'}}">
+                <view class="card-tip-header">
+                  <text class="card-tip-icon-big">{{card.data.icon}}</text>
+                  <text class="card-tip-title">{{card.data.title}}</text>
+                </view>
+                <text class="card-tip-body">{{card.data.content}}</text>
+              </view>
+
+              <!-- 营养 Pills -->
+              <view class="card-pills" wx:if="{{card.type === 'nutrition_pill'}}">
+                <text class="card-pills-title">{{card.data.title}}</text>
+                <view class="pills-row">
+                  <view class="pill pill-{{p.color}}"
+                    wx:for="{{card.data.pills}}" wx:key="label" wx:for-item="p">
+                    <text class="pill-label">{{p.label}}</text>
+                    <text class="pill-value">{{p.value}}</text>
+                  </view>
+                </view>
+              </view>
+
+              <!-- ╭─ 第 1 期肾友专属卡片（共 6 张）─╮ -->
+
+              <!-- 📊 报告指标卡 -->
+              <view class="card-report card-tappable"
+                wx:if="{{card.type === 'report_indicator_card'}}"
+                catchtap="onReportCardTap"
+                data-report-id="{{card.data.report_id}}">
+                <view class="card-report-header">
+                  <text class="card-report-title">📊 我的检查报告</text>
+                  <text class="card-report-date">{{card.data.report_date}}</text>
+                </view>
+                <view class="card-report-grid">
+                  <view class="indicator-cell"
+                    wx:for="{{card.data.indicators}}" wx:key="key" wx:for-item="ind">
+                    <text class="ind-label">{{ind.label}}</text>
+                    <text class="ind-value">{{ind.value}} {{ind.unit}}</text>
+                    <text class="ind-eval ind-eval-{{ind.eval === '高' || ind.eval === '偏高' ? 'high' : (ind.eval === '低' || ind.eval === '偏低' ? 'low' : 'normal')}}">{{ind.eval}}</text>
+                  </view>
+                </view>
+                <view class="card-report-footer" wx:if="{{card.data.abnormal_count > 0}}">
+                  <text class="report-alert">⚠️ 共 {{card.data.abnormal_count}} 项异常</text>
+                </view>
+                <view class="card-action-row">
+                  <text class="card-action-text">查看完整报告 →</text>
+                </view>
+              </view>
+
+              <!-- 🍱 今日营养卡 -->
+              <view class="card-nutri-today card-tappable"
+                wx:if="{{card.type === 'nutrition_today_card'}}"
+                catchtap="onNutritionTodayTap">
+                <view class="card-nt-header">
+                  <text class="card-nt-title">🍱 今日饮食概览</text>
+                  <text class="card-nt-date">{{card.data.date}} · 已记录 {{card.data.meal_count}} 餐</text>
+                </view>
+                <view class="card-nt-main">
+                  <view class="nt-main-item">
+                    <text class="nt-num">{{card.data.calories}}</text>
+                    <text class="nt-unit">kcal · 热量</text>
+                  </view>
+                  <view class="nt-main-item">
+                    <text class="nt-num">{{card.data.protein}}g</text>
+                    <text class="nt-unit">蛋白质</text>
+                  </view>
+                </view>
+                <view class="card-nt-usage">
+                  <view class="usage-row" wx:for="{{['potassium','phosphorus','sodium']}}" wx:key="*this" wx:for-item="uk">
+                    <text class="usage-label">{{uk === 'potassium' ? '钾' : (uk === 'phosphorus' ? '磷' : '钠')}}</text>
+                    <view class="usage-bar">
+                      <view class="usage-fill usage-fill-{{card.data.usage[uk].pct > 90 ? 'danger' : (card.data.usage[uk].pct > 70 ? 'warning' : 'safe')}}"
+                        style="width: {{card.data.usage[uk].pct > 100 ? 100 : card.data.usage[uk].pct}}%;"></view>
+                    </view>
+                    <text class="usage-text">{{card.data.usage[uk].used}}/{{card.data.usage[uk].limit}}mg</text>
+                  </view>
+                </view>
+                <view class="card-action-row">
+                  <text class="card-action-text">查看完整饮食记录 →</text>
+                </view>
+              </view>
+
+              <!-- 🍽 今日推荐餐卡 -->
+              <view class="card-meal-rec"
+                wx:if="{{card.type === 'meal_recommend_card'}}">
+                <view class="meal-rec-header">
+                  <text class="meal-rec-title">🍽 {{card.data.title || '为你推荐'}}</text>
+                </view>
+                <view class="meal-rec-list">
+                  <view class="meal-rec-item card-tappable"
+                    wx:for="{{card.data.meals}}" wx:key="name" wx:for-item="m"
+                    catchtap="onRecipeCardTap" data-name="{{m.name}}">
+                    <view class="meal-rec-line">
+                      <text class="meal-rec-tag">{{m.meal_type || '推荐'}}</text>
+                      <text class="meal-rec-name">{{m.name}}</text>
+                      <view class="safe-badge safe-{{m.safe_level}}">
+                        <text>{{m.safe_label || '可食'}}</text>
+                      </view>
+                    </view>
+                    <text class="meal-rec-desc" wx:if="{{m.reason}}">{{m.reason}}</text>
+                  </view>
+                </view>
+              </view>
+
+              <!-- ✅ 食物安全速查卡 -->
+              <view class="card-food-safety card-tappable"
+                wx:if="{{card.type === 'food_safety_card'}}"
+                catchtap="onFoodSafetyTap"
+                data-food-id="{{card.data.food_id}}"
+                data-food-name="{{card.data.name}}">
+                <view class="card-fs-header">
+                  <text class="card-fs-name">🥗 {{card.data.name}}</text>
+                  <view class="safe-badge safe-{{card.data.safe_level}}">
+                    <text>{{card.data.safe_label}}</text>
+                  </view>
+                </view>
+                <view class="card-fs-nutri">
+                  <view class="fs-cell">
+                    <text class="fs-cell-num">{{card.data.nutrition.potassium}}</text>
+                    <text class="fs-cell-label">钾 mg</text>
+                  </view>
+                  <view class="fs-cell">
+                    <text class="fs-cell-num">{{card.data.nutrition.phosphorus}}</text>
+                    <text class="fs-cell-label">磷 mg</text>
+                  </view>
+                  <view class="fs-cell">
+                    <text class="fs-cell-num">{{card.data.nutrition.sodium}}</text>
+                    <text class="fs-cell-label">钠 mg</text>
+                  </view>
+                  <view class="fs-cell">
+                    <text class="fs-cell-num">{{card.data.nutrition.protein}}</text>
+                    <text class="fs-cell-label">蛋白 g</text>
+                  </view>
+                </view>
+                <text class="card-fs-note">每 100g 营养</text>
+                <view class="card-fs-tip" wx:if="{{card.data.tip}}">
+                  <text class="card-tip-icon">💡</text>
+                  <text class="card-tip-text">{{card.data.tip}}</text>
+                </view>
+                <view class="card-action-row">
+                  <text class="card-action-text">查看食材详情 →</text>
+                </view>
+              </view>
+
+              <!-- 💧 喝水追踪卡 -->
+              <view class="card-water"
+                wx:if="{{card.type === 'water_tracking_card'}}">
+                <view class="card-water-header">
+                  <text class="card-water-title">💧 今日饮水</text>
+                  <text class="card-water-num">{{card.data.used || 0}} / {{card.data.limit || 1500}} mL</text>
+                </view>
+                <view class="card-water-bar">
+                  <view class="card-water-fill"
+                    style="width: {{((card.data.used || 0) / (card.data.limit || 1500) * 100) > 100 ? 100 : ((card.data.used || 0) / (card.data.limit || 1500) * 100)}}%;"></view>
+                </view>
+                <view class="card-water-actions">
+                  <view class="water-btn" catchtap="onAddWater" data-ml="200">+ 200mL</view>
+                  <view class="water-btn" catchtap="onAddWater" data-ml="500">+ 500mL</view>
+                </view>
+                <text class="card-water-note" wx:if="{{card.data.note}}">{{card.data.note}}</text>
+              </view>
+
+              <!-- 🛒 商品卡 -->
+              <view class="card-product card-tappable"
+                wx:if="{{card.type === 'product_card'}}"
+                catchtap="onProductCardTap"
+                data-product-id="{{card.data.product_id}}">
+                <view class="card-prod-main">
+                  <image class="card-prod-img" src="{{card.data.image}}" mode="aspectFill" wx:if="{{card.data.image}}"></image>
+                  <view class="card-prod-info">
+                    <text class="card-prod-name">{{card.data.name}}</text>
+                    <text class="card-prod-desc">{{card.data.desc}}</text>
+                    <view class="card-prod-price-row">
+                      <text class="card-prod-price">¥{{card.data.price}}</text>
+                      <text class="card-prod-original" wx:if="{{card.data.original_price}}">¥{{card.data.original_price}}</text>
+                      <text class="card-prod-sales">已售 {{card.data.sales_count}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class="card-action-row">
+                  <text class="card-action-text">查看商品详情 →</text>
+                </view>
+              </view>
+
+              <!-- ╰─ 第 1 期肾友专属卡片 结束 ─╯ -->
+
+              <!-- 推荐问题 -->
+              <view class="card-suggest" wx:if="{{card.type === 'suggest_questions'}}">
+                <text class="card-suggest-title">你可能还想问：</text>
+                <view class="suggest-item"
+                  wx:for="{{card.data.questions}}" wx:key="index"
+                  wx:for-item="q"
+                  catchtap="onSuggestTap"
+                  data-question="{{q}}">
+                  <text class="suggest-text">{{q}}</text>
+                  <text class="suggest-arrow">›</text>
+                </view>
+              </view>
+
+            </block>
+          </view>
+
+          <!-- 用户头像 -->
+          <view class="msg-avatar msg-avatar-user" wx:if="{{item.role === 'user'}}">
+            <text class="msg-avatar-emoji">👤</text>
+          </view>
+
+        </view>
+      </block>
+
+      <!-- 底部安全距离 + 滚动锚点 -->
+      <view style="height: 160rpx;" id="msg-bottom"></view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部输入栏 -->
+  <view class="input-bar-wrap">
+    <!-- 快捷指令栏 -->
+    <scroll-view class="quick-chips" scroll-x show-scrollbar="{{false}}">
+      <view class="chip" catchtap="onQuickAsk" data-q="看一下我最近的检查报告">📊 我的报告</view>
+      <view class="chip" catchtap="onQuickAsk" data-q="我今天吃了多少营养？还能再吃什么？">🍱 今日营养</view>
+      <view class="chip" catchtap="onQuickAsk" data-q="根据我的情况推荐今天的午餐">🍽 推荐今日餐</view>
+      <view class="chip" catchtap="onQuickAsk" data-q="香蕉肾友能吃吗？">🥗 查食物</view>
+      <view class="chip" catchtap="onTakePhotoAnalyze">📸 拍菜分析</view>
+    </scroll-view>
+    <view class="input-bar">
+      <input
+        class="input-field"
+        placeholder="问问小光吧..."
+        placeholder-class="input-placeholder"
+        value="{{inputText}}"
+        bindinput="onInputChange"
+        bindconfirm="onSendTap"
+        confirm-type="send"
+        disabled="{{isStreaming}}"
+        maxlength="200"
+      />
+      <view class="send-btn {{(inputText && !isStreaming) ? 'send-btn-active' : 'send-btn-disabled'}}"
+        bindtap="onSendTap">
+        <text class="send-icon">{{isStreaming ? '⏳' : '➤'}}</text>
+      </view>
+    </view>
+    <view class="ai-disclaimer">
+      <text>⚕️ AI 生成内容仅供参考，不能替代专业医疗建议，具体请咨询医生</text>
+    </view>
+  </view>
+
+</view>

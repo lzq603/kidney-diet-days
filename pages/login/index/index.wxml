@@ -1,0 +1,2 @@
+<!-- pages/login/index.wxml - 静默登录中转页（用户无感知） -->
+<view class="login-wrap"></view>

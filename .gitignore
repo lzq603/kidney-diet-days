@@ -1,0 +1,20 @@
+# 微信小程序
+.project.private.json
+.miniprogram-temp
+miniprogram_npm/
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

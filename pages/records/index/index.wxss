@@ -1,0 +1,561 @@
+/* pages/records/index/index.wxss */
+.page-wrap {
+  min-height: 100vh;
+  background: var(--bg);
+  padding-bottom: 60rpx;
+}
+
+/* 头部 */
+.header-section {
+  background: var(--bg-white);
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.header-title {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 24rpx;
+}
+
+/* 月份导航 */
+.month-nav {
+  margin-bottom: 24rpx;
+}
+
+.month-btn {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border-radius: 50%;
+  font-size: 40rpx;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.month-text {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* 日历 */
+.calendar {}
+
+.weekdays {
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.weekday {
+  flex: 1;
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  padding: 8rpx 0;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4rpx;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+}
+
+.day-num {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.day-dot {
+  width: 8rpx;
+  height: 8rpx;
+  background: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 8rpx;
+}
+
+.day-cell.other-month .day-num {
+  color: var(--text-light);
+}
+
+.day-cell.today .day-num {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.day-cell.today {
+  background: var(--primary-light);
+}
+
+.day-cell.selected {
+  background: var(--primary);
+}
+
+.day-cell.selected .day-num {
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.day-cell.has-record .day-dot {
+  background: var(--success);
+}
+
+.day-cell.selected .day-dot {
+  background: rgba(255,255,255,0.8);
+}
+
+/* 统计卡 */
+.stats-card {
+  margin: 0 20rpx 20rpx;
+}
+
+.stat-rows {
+  margin-bottom: 24rpx;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+  gap: 16rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  width: 80rpx;
+  flex-shrink: 0;
+}
+
+.stat-bar-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.stat-bar {
+  flex: 1;
+  height: 12rpx;
+  background: var(--border);
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 6rpx;
+  transition: width 0.5s ease;
+}
+
+.stat-value {
+  font-size: 24rpx;
+  font-weight: 700;
+  width: 120rpx;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* 图表 */
+.chart-section {}
+.chart-title {}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 120rpx;
+  padding: 0 8rpx;
+}
+
+.bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.bar-fill {
+  width: 40rpx;
+  border-radius: 4rpx 4rpx 0 0;
+  min-height: 4rpx;
+  transition: height 0.5s ease;
+}
+
+.bar-label {
+  font-size: 20rpx;
+  color: var(--text-secondary);
+}
+
+/* 记录区 */
+.records-section {
+  padding: 0 20rpx;
+}
+
+.add-btn {
+  background: var(--primary);
+  color: #fff;
+  font-size: 26rpx;
+  font-weight: 600;
+  padding: 12rpx 28rpx;
+  border-radius: 100rpx;
+}
+
+/* 餐次分组 */
+.meal-group-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 16rpx 0 8rpx;
+}
+
+.meal-icon { font-size: 32rpx; }
+.meal-type { font-size: 28rpx; font-weight: 700; color: var(--text-primary); }
+.meal-calories { margin-left: auto; }
+
+.record-item {
+  padding: 20rpx 24rpx;
+  margin-bottom: 12rpx;
+}
+
+.rec-level-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+  margin-top: 8rpx;
+  flex-shrink: 0;
+}
+
+.rec-level-dot.safe { background: var(--success); }
+.rec-level-dot.warning { background: var(--warning); }
+.rec-level-dot.danger { background: var(--danger); }
+
+.rec-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4rpx;
+}
+
+.rec-nutrition {
+  line-height: 1.5;
+}
+
+.rec-actions {
+  gap: 12rpx;
+}
+
+.rec-edit {
+  font-size: 32rpx;
+  padding: 8rpx;
+}
+
+.rec-del {
+  font-size: 36rpx;
+  padding: 8rpx;
+}
+
+.modal-input.disabled {
+  color: var(--text-secondary);
+  background: var(--bg);
+}
+
+/* 弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-sizing: border-box;
+  touch-action: none;
+}
+
+.modal-content {
+  width: 100%;
+  max-height: 88vh;
+  background: var(--bg-white);
+  border-radius: 32rpx 32rpx 0 0;
+  padding: 40rpx 32rpx;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.form-scroll {
+  flex: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  height: 0;
+  min-height: 0;
+  margin-right: -32rpx;
+  padding-right: 32rpx;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+.modal-sub {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 32rpx;
+}
+
+.modal-input {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 0 24rpx;
+  font-size: 30rpx;
+  color: var(--text-primary);
+  margin-bottom: 24rpx;
+  width: 100%;
+  box-sizing: border-box;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.meal-select {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.meal-option {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  border: 2rpx solid transparent;
+}
+
+.meal-option.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+.nutrition-result {
+  background: #F7FBFF;
+  border: 1rpx solid #DDEEFF;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 28rpx;
+}
+
+/* 多食物样式 */
+.multi-food-list {
+  margin-top: 16rpx;
+}
+
+.multi-food-item {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 12rpx;
+}
+
+.multi-food-item:last-child {
+  margin-bottom: 0;
+}
+
+.multi-food-head {
+  align-items: flex-start;
+}
+
+.multi-food-name {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6rpx;
+}
+
+.multi-food-grams {
+  margin-bottom: 8rpx;
+}
+
+.multi-food-note {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 12rpx;
+}
+
+.multi-food-nutrients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.mini-nutrient {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  background: #F8FAFE;
+  padding: 6rpx 12rpx;
+  border-radius: 999rpx;
+}
+
+.nutrition-head {
+  align-items: flex-start;
+  margin-bottom: 12rpx;
+}
+
+.nutrition-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6rpx;
+}
+
+.nutrition-source {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+.safe-pill {
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.safe-pill.safe {
+  color: #2F8F46;
+  background: #EAF8EE;
+}
+
+.safe-pill.warning {
+  color: #B36B00;
+  background: #FFF7E6;
+}
+
+.safe-pill.danger {
+  color: #C0392B;
+  background: #FFF1F0;
+}
+
+.nutrition-note {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.portion-box {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.portion-label {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+.portion-value {
+  color: var(--success);
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.portion-slider {
+  margin: 0;
+}
+
+.portion-range {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+.portion-nutrients {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14rpx;
+}
+
+.portion-nutrient {
+  background: #fff;
+  border-radius: 18rpx;
+  padding: 16rpx;
+}
+
+.portion-nutrient-label {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  margin-bottom: 6rpx;
+}
+
+.portion-nutrient-value {
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.modal-btns {
+  gap: 20rpx;
+}
+
+.modal-btn-cancel {
+  flex: 1;
+  background: var(--bg) !important;
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius) !important;
+  height: 88rpx !important;
+  line-height: normal !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 30rpx !important;
+  border: none !important;
+}
+
+.modal-btn-ai {
+  flex: 1.5;
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-radius: var(--radius) !important;
+  height: 88rpx !important;
+  line-height: normal !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 30rpx !important;
+  font-weight: 600 !important;
+  border: none !important;
+}

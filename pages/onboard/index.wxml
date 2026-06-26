@@ -1,0 +1,53 @@
+<!-- pages/index/index.wxml - 引导页 -->
+<view class="splash-wrap">
+  <!-- 背景装饰 -->
+  <view class="bg-circle bg-circle-1"></view>
+  <view class="bg-circle bg-circle-2"></view>
+  <view class="bg-circle bg-circle-3"></view>
+
+  <!-- Logo区域 -->
+  <view class="logo-area">
+    <view class="logo-icon">🫘</view>
+    <view class="app-name">肾友食光</view>
+    <view class="app-slogan">让每一餐都安心</view>
+  </view>
+
+  <!-- 特性介绍 -->
+  <view class="features">
+    <view class="feature-item" wx:for="{{features}}" wx:key="index">
+      <view class="feature-icon">{{item.icon}}</view>
+      <view class="feature-info">
+        <view class="feature-title">{{item.title}}</view>
+        <view class="feature-desc">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 肾功能分期选择 -->
+  <view class="stage-section" wx:if="{{!hasStage}}">
+    <view class="stage-title">请选择您的肾功能分期</view>
+    <view class="stage-grid">
+      <view 
+        class="stage-item {{selectedStage === item.value ? 'active' : ''}}"
+        wx:for="{{stages}}" 
+        wx:key="value"
+        bindtap="selectStage"
+        data-value="{{item.value}}"
+      >
+        <view class="stage-label">{{item.label}}</view>
+        <view class="stage-desc">{{item.desc}}</view>
+      </view>
+    </view>
+    <view class="stage-tip">💡 如不确定，可先选择3a期，后续可在"我的"中修改</view>
+  </view>
+
+  <!-- 开始按钮 -->
+  <view class="action-area">
+    <button class="start-btn" bindtap="goToMain" wx:if="{{hasStage || selectedStage}}">
+      开始使用
+    </button>
+    <view class="disclaimer">
+      本应用信息仅供参考，不能替代专业医疗建议
+    </view>
+  </view>
+</view>

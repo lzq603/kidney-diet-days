@@ -1,0 +1,144 @@
+<!-- pages/recipes/index/index.wxml - 食谱主页 -->
+<view class="page-wrap">
+
+  <!-- 顶部 Hero + 搜索 -->
+  <view class="hero-section">
+    <view class="hero-bg-circle circle-1"></view>
+    <view class="hero-bg-circle circle-2"></view>
+
+    <view class="hero-content">
+      <view class="hero-title-row">
+        <view>
+          <text class="hero-greeting">{{todayDate}}</text>
+          <text class="hero-title">今天吃什么？</text>
+        </view>
+        <view class="stage-badge">{{stageName}}</view>
+      </view>
+
+      <text class="hero-subtitle">输入菜名，AI 给出肾友友好版做法</text>
+
+      <!-- 搜索框 -->
+      <view class="search-box {{isFocused ? 'search-focused' : ''}}">
+        <text class="search-icon">🔍</text>
+        <input
+          class="search-input"
+          placeholder="输入菜品名称，如：白菜炖豆腐"
+          placeholder-class="search-placeholder"
+          value="{{searchText}}"
+          bindinput="onSearchInput"
+          bindfocus="onFocus"
+          bindblur="onBlur"
+          confirm-type="search"
+          bindconfirm="doAnalyze"
+        />
+        <view wx:if="{{searchText}}" class="clear-btn" bindtap="clearSearch">×</view>
+      </view>
+
+      <!-- 快捷操作 -->
+      <view class="action-row">
+        <view class="primary-action" bindtap="doAnalyze">
+          <text class="action-icon">✨</text>
+          <text>AI 分析</text>
+        </view>
+        <view class="secondary-action" bindtap="takePhoto">
+          <text class="action-icon">📷</text>
+          <text>拍照识别</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷标签 -->
+  <scroll-view class="quick-tags" scroll-x enable-flex>
+    <view class="quick-tag" wx:for="{{quickTags}}" wx:key="*this" bindtap="tapQuickTag" data-tag="{{item}}">
+      {{item}}
+    </view>
+    <view class="quick-tag more" bindtap="goToFoods">🥗 食材库</view>
+  </scroll-view>
+
+  <!-- 今日摄入概览 -->
+  <view class="card today-card">
+    <view class="card-header">
+      <view>
+        <text class="card-title">今日摄入</text>
+        <text class="card-subtitle">实时同步你的饮食记录</text>
+      </view>
+    </view>
+    <view class="nutrition-row">
+      <view class="nutrition-item" wx:for="{{todayNutrition}}" wx:key="key">
+        <view class="nut-value" style="color: {{item.color}};">{{item.value}}</view>
+        <view class="nut-unit">{{item.unit}}</view>
+        <view class="nut-label">{{item.label}}</view>
+        <view class="nut-bar">
+          <view class="nut-bar-fill" style="width: {{item.percent}}%; background: {{item.color}};"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 收藏食谱 -->
+  <view wx:if="{{favorites.length > 0}}" class="section-title">
+    <text>我的收藏</text>
+    <text class="section-sub-text">常吃的安全菜</text>
+  </view>
+  <scroll-view wx:if="{{favorites.length > 0}}" class="favorites-scroll" scroll-x enable-flex>
+    <view class="fav-card" wx:for="{{favorites}}" wx:key="name" bindtap="viewFavorite" data-index="{{index}}">
+      <text class="fav-icon">🍽</text>
+      <text class="fav-name">{{item.name}}</text>
+      <view class="safe-dot safe-{{item.safeLevel}}"></view>
+    </view>
+  </scroll-view>
+
+  <!-- 每日推荐 -->
+  <view class="section-title">
+    <text>今日推荐</text>
+    <text class="section-sub-text">每日为你换一批</text>
+    <view class="refresh-btn" bindtap="refreshRecommend">
+      <text wx:if="{{!refreshing}}">换一批</text>
+      <text wx:else class="refresh-spin">⟳</text>
+    </view>
+  </view>
+
+  <view class="recipe-list">
+    <view
+      class="card recipe-card"
+      wx:for="{{recommended}}"
+      wx:key="name"
+      bindtap="viewRecommended"
+      data-index="{{index}}"
+    >
+      <view class="recipe-card-top">
+        <view>
+          <text class="recipe-category-tag" wx:if="{{item.category}}">{{item.category}}</text>
+          <text class="recipe-name">{{item.name}}</text>
+        </view>
+        <view class="safe-badge safe-{{item.safeLevel}}">
+          {{item.safeLevel === 'safe' ? '可食' : item.safeLevel === 'warning' ? '限量' : '慎食'}}
+        </view>
+      </view>
+      <text class="recipe-desc text-secondary">{{item.desc}}</text>
+
+      <view class="recipe-nutrition">
+        <view class="rn-row rn-row-main">
+          <view class="rn-item" wx:for="{{item.nutrition}}" wx:for-item="n" wx:key="label" wx:if="{{n.label !== '热量'}}">
+            <text class="rn-val">{{n.value}}</text>
+            <text class="rn-label text-light">{{n.label}}</text>
+          </view>
+        </view>
+        <view class="rn-row rn-row-calorie">
+          <view class="rn-item" wx:for="{{item.nutrition}}" wx:for-item="n" wx:key="label" wx:if="{{n.label === '热量'}}">
+            <text class="rn-val rn-calorie-val">{{n.value}}</text>
+            <text class="rn-label text-light">{{n.label}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 查看更多链接 -->
+  <view class="view-more-wrap" bindtap="goToCategory">
+    <text class="view-more-text">查看更多</text>
+    <text class="view-more-arrow">›</text>
+  </view>
+
+</view>

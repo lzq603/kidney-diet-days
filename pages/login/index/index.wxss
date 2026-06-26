@@ -1,0 +1,6 @@
+/* pages/login/index.wxss - 静默登录页（全透明，用户无感知） */
+.login-wrap {
+  width: 100%;
+  height: 100vh;
+  background: transparent;
+}

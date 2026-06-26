@@ -1,0 +1,418 @@
+/* pages/profile/index/index.wxss */
+.page-wrap {
+  min-height: 100vh;
+  background: var(--bg);
+  padding-bottom: 60rpx;
+}
+
+/* 头部 */
+.profile-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: 60rpx 32rpx 48rpx;
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.avatar-wrap {}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  font-weight: 800;
+  color: #fff;
+  border: 4rpx solid rgba(255,255,255,0.5);
+}
+
+.user-info {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8rpx;
+}
+
+.stage-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 22rpx;
+  padding: 6rpx 20rpx;
+  border-radius: 100rpx;
+}
+
+/* VIP 标签 */
+.vip-badge {
+  display: inline-flex; align-items: center;
+  margin-top: 10rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 100rpx;
+  background: rgba(255,255,255,0.15);
+  cursor: pointer;
+}
+.vip-badge:not(.vip-active) {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  animation: pulse 2s ease-in-out infinite;
+}
+.vip-badge.vip-active {
+  background: linear-gradient(135deg, #f5af19, #f12711);
+}
+.vip-text { font-size: 22rpx; color: #fff; font-weight: 600; }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.body-tags {
+  display: flex;
+  gap: 10rpx;
+  margin-top: 8rpx;
+  flex-wrap: wrap;
+}
+
+.body-tag {
+  background: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.85);
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 100rpx;
+}
+
+.bmi-tag {
+  background: rgba(255,255,255,0.35);
+  color: #fff;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 26rpx;
+  padding: 12rpx 28rpx;
+  border-radius: 100rpx;
+  flex-shrink: 0;
+}
+
+/* 健康数据 */
+.health-card {
+  margin: 20rpx;
+}
+
+.health-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 16rpx 0;
+  margin-bottom: 20rpx;
+}
+
+.health-item {
+  width: 20%;
+  min-width: 120rpx;
+  text-align: center;
+}
+
+.health-ring {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--color, #4A90D9) calc(var(--percent, 0) * 3.6deg),
+    var(--border, #E8ECF0) 0
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10rpx;
+  position: relative;
+}
+
+.health-ring-inner {
+  width: 74rpx;
+  height: 74rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.health-val {
+  font-size: 22rpx;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.health-unit {
+  font-size: 14rpx;
+  color: var(--text-secondary);
+}
+
+.health-label {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  margin-bottom: 4rpx;
+}
+
+.health-limit {
+  font-size: 18rpx;
+}
+
+.health-tip {
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  padding: 16rpx 20rpx;
+  font-size: 24rpx;
+  color: var(--primary-dark);
+  line-height: 1.7;
+}
+
+/* 设置项 */
+.settings-section {
+  padding: 0 20rpx;
+}
+
+.settings-group {
+  margin-bottom: 24rpx;
+}
+
+.settings-group-title {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
+  padding-left: 8rpx;
+}
+
+.settings-list {
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 32rpx;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.si-left { gap: 16rpx; }
+
+.si-icon {
+  font-size: 36rpx;
+  width: 48rpx;
+  text-align: center;
+}
+
+.si-label {
+  font-size: 30rpx;
+  color: var(--text-primary);
+}
+
+.si-right { gap: 8rpx; }
+
+.si-value {
+  max-width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.si-arrow {
+  font-size: 40rpx;
+  color: var(--text-light);
+}
+
+/* 设置弹窗 */
+.modal-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-sizing: border-box;
+  touch-action: none;
+}
+
+.settings-modal {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-white);
+  border-radius: 32rpx 32rpx 0 0;
+  padding: 40rpx 32rpx;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  touch-action: none;
+  max-height: 70vh;
+}
+
+.form-scroll {
+  flex: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  height: 0;
+  min-height: 0;
+  margin-right: -32rpx;
+  padding-right: 32rpx;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 32rpx;
+}
+
+.form-item {
+  margin-bottom: 28rpx;
+}
+
+.form-label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
+}
+
+.form-input {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 0 24rpx;
+  font-size: 30rpx;
+  color: var(--text-primary);
+  width: 100%;
+  box-sizing: border-box;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.stage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12rpx;
+}
+
+.stage-option {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 16rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  border: 2rpx solid transparent;
+}
+
+.stage-option.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+/* 性别选择 */
+.gender-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12rpx;
+}
+
+.gender-option {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 16rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  border: 2rpx solid transparent;
+}
+
+.gender-option.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+/* 肾病类型选择 */
+.picker-input {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 0 24rpx;
+  font-size: 30rpx;
+  color: var(--text-primary);
+  width: 100%;
+  box-sizing: border-box;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.picker-input:empty::before {
+  content: attr(placeholder);
+  color: var(--text-placeholder);
+}
+
+/* 双列表单项 */
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin-bottom: 28rpx;
+}
+
+.form-item-half .form-label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
+}
+
+.modal-btns { gap: 20rpx; }
+
+.modal-btn-cancel {
+  flex: 1;
+  background: var(--bg) !important;
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius) !important;
+  height: 88rpx !important;
+  line-height: normal !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 30rpx !important;
+  border: none !important;
+}
+
+.modal-btn-ai {
+  flex: 1.5;
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-radius: var(--radius) !important;
+  height: 88rpx !important;
+  line-height: normal !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 30rpx !important;
+  font-weight: 600 !important;
+  border: none !important;
+}

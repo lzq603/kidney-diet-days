@@ -1,0 +1,27 @@
+{
+  "description": "肾友食光小程序配置",
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "file",
+        "value": ".eslintrc.js"
+      }
+    ]
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.19.4",
+  "appid": "wx1234567890abcdef",
+  "projectname": "肾友食光",
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

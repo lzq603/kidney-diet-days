@@ -1,0 +1,229 @@
+<!-- pages/records/index/index.wxml - 饮食记录页 -->
+<view class="page-wrap">
+
+  <!-- 头部 -->
+  <view class="header-section">
+    <view class="header-title">饮食记录</view>
+
+    <!-- 月份导航 -->
+    <view class="month-nav flex-between">
+      <view class="month-btn" bindtap="prevMonth">‹</view>
+      <view class="month-text">{{currentYear}}年{{currentMonth}}月</view>
+      <view class="month-btn" bindtap="nextMonth">›</view>
+    </view>
+
+    <!-- 日历 -->
+    <view class="calendar">
+      <view class="weekdays flex">
+        <view class="weekday" wx:for="{{weekdays}}" wx:key="*this">{{item}}</view>
+      </view>
+      <view class="days-grid">
+        <view
+          class="day-cell {{item.isCurrentMonth ? '' : 'other-month'}} {{item.isToday ? 'today' : ''}} {{item.date === selectedDate ? 'selected' : ''}} {{item.hasRecord ? 'has-record' : ''}}"
+          wx:for="{{calendarDays}}"
+          wx:key="date"
+          bindtap="selectDay"
+          data-date="{{item.date}}"
+          data-valid="{{item.isCurrentMonth}}"
+        >
+          <view class="day-num">{{item.day}}</view>
+          <view class="day-dot" wx:if="{{item.hasRecord}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 当日营养统计 -->
+  <view class="card stats-card">
+    <view class="flex-between" style="margin-bottom:20rpx">
+      <view class="section-title" style="margin-bottom:0;padding:0">当日摄入</view>
+      <view class="text-sm text-secondary">{{dayStatsDate}}</view>
+    </view>
+
+    <!-- 营养进度条 -->
+    <view class="stat-rows">
+      <view class="stat-row" wx:for="{{dayStats}}" wx:key="label">
+        <view class="stat-label">{{item.label}}</view>
+        <view class="stat-bar-wrap">
+          <view class="stat-bar">
+            <view class="stat-bar-fill" style="width:{{item.percent}}%;background:{{item.color}}"></view>
+          </view>
+          <view class="stat-value" style="color:{{item.color}}">{{item.value}}{{item.unit}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 热量趋势图 (已隐藏)
+    <view class="chart-section">
+      <view class="chart-title text-sm text-secondary" style="margin-bottom:12rpx">近7日热量趋势</view>
+      <view class="chart-wrap">
+        <canvas canvas-id="caloriesChart" class="calories-chart"></canvas>
+        <view class="bar-chart">
+          <view class="bar-item" wx:for="{{calorieBars}}" wx:key="date">
+            <view class="bar-fill" style="height:{{item.height}}rpx;background:{{item.color}}"></view>
+            <view class="bar-label">{{item.label}}</view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+  </view>
+
+  <!-- 选中日期的记录 -->
+  <view class="records-section">
+    <view class="flex-between" style="padding:0 0 16rpx">
+      <view class="section-title" style="margin-bottom:0;padding:0">
+        {{selectedDate === todayStr ? '今天' : selectedDate}}
+        <text class="text-sm text-secondary font-normal"> · {{dayRecords.length}}条记录</text>
+      </view>
+      <view class="add-btn" bindtap="addRecord">+ 添加</view>
+    </view>
+
+    <!-- 无记录 -->
+    <view class="empty-wrap" wx:if="{{dayRecords.length === 0}}">
+      <view class="empty-icon">🍽️</view>
+      <view class="empty-text">当天暂无饮食记录</view>
+      <view class="text-sm text-secondary" style="margin-top:8rpx">点击"+ 添加"开始记录</view>
+    </view>
+
+    <!-- 记录列表 -->
+    <view class="record-list" wx:else>
+      <!-- 按餐次分组 -->
+      <view wx:for="{{mealGroups}}" wx:key="mealType">
+        <view class="meal-group-header">
+          <text class="meal-icon">{{item.icon}}</text>
+          <text class="meal-type">{{item.mealType}}</text>
+          <text class="meal-calories text-secondary text-sm">{{item.totalCalories}} kcal</text>
+        </view>
+        <view
+          class="record-item card"
+          wx:for="{{item.records}}"
+          wx:key="id"
+          wx:for-item="rec"
+        >
+          <view class="flex-between">
+            <view class="rec-left flex" bindtap="editRecord" data-date="{{selectedDate}}" data-id="{{rec.id}}">
+              <view class="rec-level-dot {{rec.safeLevel}}"></view>
+              <view>
+                <view class="rec-name">{{rec.name}}</view>
+                <view class="rec-nutrition text-sm text-secondary">
+                  {{rec.nutrition.calories || 0}}kcal · 蛋白{{rec.nutrition.protein || 0}}g · 钾{{rec.nutrition.potassium || 0}}mg · 钠{{rec.nutrition.sodium || 0}}mg · {{rec.portionGrams || 0}}g
+                </view>
+              </view>
+            </view>
+            <view class="rec-actions flex">
+              <view class="rec-edit" catchtap="editRecord" data-date="{{selectedDate}}" data-id="{{rec.id}}">✏️</view>
+              <view class="rec-del" catchtap="deleteRecord" data-date="{{selectedDate}}" data-id="{{rec.id}}">🗑️</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 添加记录弹窗 -->
+  <view class="modal-mask" wx:if="{{showAddModal}}" bindtap="closeModal">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-title">{{isEditing ? '编辑饮食记录' : '添加饮食记录'}}</view>
+      <view class="modal-sub">{{selectedDate}} · {{mealTypeLabel}}</view>
+
+      <view class="form-scroll">
+        <input
+          class="modal-input {{isEditing ? 'disabled' : ''}}"
+          placeholder="输入食物名称，如番茄豆腐，或多个食物如：200克清炒藕带，100克红烧鸭子"
+          value="{{inputName}}"
+          bindinput="onInputName"
+          focus="{{showAddModal && !isEditing}}"
+          disabled="{{isEditing}}"
+        />
+
+        <!-- 餐次选择 -->
+        <view class="meal-select">
+          <view
+            class="meal-option {{inputMealType === item.value ? 'active' : ''}}"
+            wx:for="{{mealOptions}}"
+            wx:key="value"
+            catchtap="selectMealType"
+            data-value="{{item.value}}"
+          >{{item.label}}</view>
+        </view>
+
+        <!-- 多食物结果 -->
+        <view class="nutrition-result multi-food-result" wx:if="{{isMultiFood && analyzedFoods}}">
+          <view class="nutrition-head flex-between">
+            <view>
+              <view class="nutrition-name">已识别 {{analyzedFoods.length}} 个食物</view>
+              <view class="nutrition-source">AI营养分析</view>
+            </view>
+          </view>
+
+          <view class="multi-food-list">
+            <view class="multi-food-item" wx:for="{{analyzedFoods}}" wx:key="name">
+              <view class="multi-food-head flex-between">
+                <view class="multi-food-name">{{item.name}}</view>
+                <view class="safe-pill {{item.safeLevel}}">{{item.safeLevel === 'safe' ? '适合' : item.safeLevel === 'danger' ? '避免' : '限量'}}</view>
+              </view>
+              <view class="multi-food-grams text-sm text-secondary">{{item.inputGrams}}g</view>
+              <view class="multi-food-note text-sm" wx:if="{{item.note}}">{{item.note}}</view>
+              <view class="multi-food-nutrients">
+                <view class="mini-nutrient">热量 {{item.nutritionTotal.calories}}kcal</view>
+                <view class="mini-nutrient">蛋白 {{item.nutritionTotal.protein}}g</view>
+                <view class="mini-nutrient">钾 {{item.nutritionTotal.potassium}}mg</view>
+                <view class="mini-nutrient">磷 {{item.nutritionTotal.phosphorus}}mg</view>
+                <view class="mini-nutrient">钠 {{item.nutritionTotal.sodium}}mg</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 单食物结果（保持原逻辑） -->
+        <view class="nutrition-result" wx:elif="{{analyzedFood}}">
+          <view class="nutrition-head flex-between">
+            <view>
+              <view class="nutrition-name">{{analyzedFood.name}}</view>
+              <view class="nutrition-source">每100g估算营养 · {{analyzedFood._source === 'ai_nutrition' ? 'AI营养分析' : '营养分析'}}</view>
+            </view>
+            <view class="safe-pill {{analyzedFood.safeLevel}}">{{analyzedFood.safeLevel === 'safe' ? '适合' : analyzedFood.safeLevel === 'danger' ? '避免' : '限量'}}</view>
+          </view>
+          <view class="nutrition-note" wx:if="{{analyzedFood.note}}">{{analyzedFood.note}}</view>
+
+          <view class="portion-box">
+            <view class="portion-label flex-between">
+              <text>本次摄入量</text>
+              <text class="portion-value">{{portionGrams}}g</text>
+            </view>
+            <slider
+              class="portion-slider"
+              min="{{portionMin}}"
+              max="{{portionMax}}"
+              step="{{portionStep}}"
+              value="{{portionGrams}}"
+              activeColor="#52C41A"
+              backgroundColor="#E8E8E8"
+              block-size="20"
+              bindchange="onPortionChange"
+              bindchanging="onPortionChanging"
+            />
+            <view class="portion-range flex-between">
+              <text>{{portionMin}}g</text>
+              <text>{{portionMax}}g</text>
+            </view>
+          </view>
+
+          <view class="portion-nutrients">
+            <view class="portion-nutrient" wx:for="{{portionNutrients}}" wx:key="key">
+              <view class="portion-nutrient-label">{{item.label}}</view>
+              <view class="portion-nutrient-value" style="color:{{item.color}}">{{item.value}}{{item.unit}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="modal-btns flex">
+        <button class="modal-btn-cancel" catchtap="closeModal">取消</button>
+        <button wx:if="{{!isEditing && !analyzedFood && !isMultiFood}}" class="modal-btn-ai" loading="{{analyzingFood}}" disabled="{{analyzingFood}}" catchtap="analyzeAndAdd">分析营养</button>
+        <button wx:else class="modal-btn-ai" catchtap="confirmAddRecord">{{isEditing ? '保存' : (isMultiFood ? '记录全部' : '记录饮食')}}</button>
+      </view>
+    </view>
+  </view>
+
+</view>

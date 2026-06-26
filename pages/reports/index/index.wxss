@@ -1,0 +1,32 @@
+/* pages/reports/index/index.wxss */
+.page { padding: 28rpx; min-height: 100vh; background: #F5F7FA; }
+
+.upload-section { margin-bottom: 28rpx; }
+.upload-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24rpx; padding: 40rpx;
+  text-align: center; color: #fff;
+}
+.upload-btn.uploading { opacity: 0.7; }
+.upload-icon { font-size: 64rpx; display: block; margin-bottom: 12rpx; }
+.upload-text { font-size: 32rpx; font-weight: 700; display: block; margin-bottom: 8rpx; }
+.upload-hint { font-size: 24rpx; opacity: 0.8; }
+
+.list-section { background: #fff; border-radius: 24rpx; padding: 28rpx; }
+.section-title { font-size: 28rpx; font-weight: 700; color: #2C3E50; display: block; margin-bottom: 20rpx; }
+
+.report-item {
+  border-bottom: 1rpx solid #F0F4F8; padding: 20rpx 0;
+}
+.report-item:last-child { border-bottom: none; }
+.report-header { display: flex; justify-content: space-between; margin-bottom: 8rpx; }
+.report-date { font-size: 28rpx; font-weight: 600; color: #2C3E50; }
+.report-time { font-size: 22rpx; color: #BDC3C7; }
+.report-summary { display: flex; flex-wrap: wrap; gap: 8rpx; }
+.summary-item { font-size: 22rpx; color: #7F8C8D; }
+.report-actions { margin-top: 8rpx; }
+.delete-btn { font-size: 24rpx; color: #FF4D4F; }
+
+.empty-tip { text-align: center; padding: 60rpx 0; font-size: 26rpx; color: #BDC3C7; }
+.empty-sub { display: block; font-size: 22rpx; margin-top: 8rpx; }
+.loading-tip { text-align: center; padding: 40rpx; font-size: 26rpx; color: #BDC3C7; }

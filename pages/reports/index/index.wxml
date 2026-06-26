@@ -1,0 +1,40 @@
+<!-- pages/reports/index/index.wxml -->
+<view class="page">
+  <!-- 上传按钮 -->
+  <view class="upload-section">
+    <view class="upload-btn" bindtap="onUploadTap" wx:if="{{!uploading}}">
+      <text class="upload-icon">📷</text>
+      <text class="upload-text">拍照或上传检查报告</text>
+      <text class="upload-hint">AI 自动识别化验单指标</text>
+    </view>
+    <view class="upload-btn uploading" wx:else>
+      <text class="upload-icon">⏳</text>
+      <text class="upload-text">AI 识别中...</text>
+    </view>
+  </view>
+
+  <!-- 报告列表 -->
+  <view class="list-section">
+    <text class="section-title">历史报告</text>
+
+    <view class="report-item" wx:for="{{reports}}" wx:key="id" data-id="{{item.id}}" bindtap="onReportTap">
+      <view class="report-header">
+        <text class="report-date">{{item.report_date || '未知日期'}}</text>
+        <text class="report-time">{{item.created_at}}</text>
+      </view>
+      <view class="report-summary" wx:if="{{item.summary}}">
+        <text class="summary-item" wx:for="{{item.summary}}" wx:for-item="sv" wx:key="*this">{{sv}}</text>
+      </view>
+      <view class="report-actions">
+        <text class="delete-btn" data-id="{{item.id}}" catchtap="onDeleteTap">删除</text>
+      </view>
+    </view>
+
+    <view class="empty-tip" wx:if="{{!loading && reports.length === 0}}">
+      <text>暂无检查报告</text>
+      <text class="empty-sub">点击上方按钮拍照或上传化验单</text>
+    </view>
+
+    <view class="loading-tip" wx:if="{{loading}}">加载中...</view>
+  </view>
+</view>

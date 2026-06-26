@@ -1,0 +1,338 @@
+<!-- pages/recipes/detail/index.wxml - AI食谱分析结果页 -->
+<view class="detail-wrap">
+
+  <!-- ════════════════ 加载动画 ════════════════ -->
+  <view class="loading-card" wx:if="{{loading}}">
+    <view class="loading-robot">🤖</view>
+    <view class="loading-title">AI营养师分析中…</view>
+    <view class="loading-subtitle">正在为您的{{stageName}}量身定制</view>
+    <view class="loading-steps">
+      <view class="load-step {{loadingStep >= 1 ? 'done' : ''}}">
+        <view class="load-dot"></view>
+        <text>识别食材成分</text>
+        <text class="load-check" wx:if="{{loadingStep >= 1}}">✓</text>
+      </view>
+      <view class="load-step {{loadingStep >= 2 ? 'done' : ''}}">
+        <view class="load-dot"></view>
+        <text>评估肾友安全性</text>
+        <text class="load-check" wx:if="{{loadingStep >= 2}}">✓</text>
+      </view>
+      <view class="load-step {{loadingStep >= 3 ? 'done' : ''}}">
+        <view class="load-dot"></view>
+        <text>计算营养数据</text>
+        <text class="load-check" wx:if="{{loadingStep >= 3}}">✓</text>
+      </view>
+      <view class="load-step {{loadingStep >= 4 ? 'done' : ''}}">
+        <view class="load-dot"></view>
+        <text>生成肾友版做法</text>
+        <text class="load-check" wx:if="{{loadingStep >= 4}}">✓</text>
+      </view>
+    </view>
+    <view class="loading-bar-wrap">
+      <view class="loading-bar" style="width:{{loadingStep * 25}}%"></view>
+    </view>
+  </view>
+
+  <!-- ════════════════ 分析结果 ════════════════ -->
+  <block wx:if="{{!loading && result}}">
+
+    <!-- ── 顶部安全等级 Banner ──────────────── -->
+    <view class="safe-banner" style="background:{{result.levelCfg.gradient}}">
+      <view class="banner-left">
+        <view class="banner-icon">{{result.levelCfg.icon}}</view>
+        <view class="banner-info">
+          <view class="banner-dish">{{result.dishName}}</view>
+          <view class="banner-label">{{result.levelCfg.label}}</view>
+          <view class="banner-stage">{{stageName}}</view>
+        </view>
+      </view>
+      <!-- 综合评分圆 -->
+      <view class="score-circle" style="border-color:rgba(255,255,255,0.6)">
+        <view class="score-num">{{result.score}}</view>
+        <view class="score-unit">分</view>
+        <view class="score-label">肾友评分</view>
+      </view>
+    </view>
+
+    <!-- AI 分析来源标注 -->
+    <view class="source-tag">
+      <text class="source-text">{{aiSourceLabel}}</text>
+      <text class="source-tip" wx:if="{{result.servingFrequency}}"> · 推荐频率：{{result.servingFrequency}}</text>
+    </view>
+
+    <!-- ── 安全说明卡 ───────────────────────── -->
+    <view class="card">
+      <view class="card-title">
+        <text class="card-title-icon">🛡️</text>
+        <text>安全分析</text>
+      </view>
+      <view class="reason-text">{{result.reason}}</view>
+
+      <!-- 关键风险警告 -->
+      <view class="warnings-wrap" wx:if="{{result.keyWarnings && result.keyWarnings.length > 0}}">
+        <view class="warning-item" wx:for="{{result.keyWarnings}}" wx:key="*this">
+          <text class="warning-icon">⚡</text>
+          <text class="warning-text">{{item}}</text>
+        </view>
+      </view>
+
+      <!-- 烹饪方式推荐/禁止 -->
+      <view class="cook-method-wrap" wx:if="{{result.cookMethodDisplay}}">
+        <view class="cook-method-row" wx:if="{{result.cookMethodDisplay.recommended && result.cookMethodDisplay.recommended.length > 0}}">
+          <text class="cook-method-label recommend">✅ 推荐方式</text>
+          <view class="cook-tags">
+            <view class="cook-tag recommend" wx:for="{{result.cookMethodDisplay.recommended}}" wx:key="name">
+              {{item.icon}} {{item.name}}
+            </view>
+          </view>
+        </view>
+        <view class="cook-method-row" wx:if="{{result.cookMethodDisplay.avoid && result.cookMethodDisplay.avoid.length > 0}}">
+          <text class="cook-method-label avoid">🚫 避免方式</text>
+          <view class="cook-tags">
+            <view class="cook-tag avoid" wx:for="{{result.cookMethodDisplay.avoid}}" wx:key="name">
+              {{item.icon}} {{item.name}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ── 食材安全评级 ─────────────────────── -->
+    <view class="card">
+      <view class="card-title" bindtap="toggleIngredients">
+        <view class="card-title-left">
+          <text class="card-title-icon">🥬</text>
+          <text>食材安全评级</text>
+          <text class="card-count">共{{result.ingredients.length}}种</text>
+        </view>
+        <text class="card-expand-icon">{{ingredientsExpanded ? '▲' : '▼'}}</text>
+      </view>
+
+      <view wx:if="{{ingredientsExpanded}}">
+        <view
+          class="ing-item"
+          wx:for="{{result.ingredients}}"
+          wx:key="name"
+        >
+          <view class="ing-left">
+            <text class="ing-cat-icon">{{item.categoryIcon}}</text>
+            <view class="ing-info">
+              <view class="ing-name-row">
+                <text class="ing-name">{{item.name}}</text>
+                <text class="ing-amount text-sm text-secondary"> / {{item.amount}}</text>
+              </view>
+              <text class="ing-tip text-sm">{{item.tip}}</text>
+              <view class="ing-risk" wx:if="{{item.risk}}">
+                <text class="risk-tag">⚠ {{item.risk}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="ing-badge" style="background:{{item.safeColor}}">
+            <text class="ing-badge-text">{{item.safeLabel}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ── 营养分析（进度条版） ────────────── -->
+    <view class="card">
+      <view class="card-title" bindtap="toggleNutrition">
+        <view class="card-title-left">
+          <text class="card-title-icon">📊</text>
+          <text>营养分析</text>
+          <text class="card-sub text-sm text-secondary"> 每份约{{result.servingSize}}</text>
+        </view>
+        <text class="card-expand-icon">{{nutritionExpanded ? '▲' : '▼'}}</text>
+      </view>
+
+      <view wx:if="{{nutritionExpanded}}">
+        <view class="nut-bar-item" wx:for="{{result.nutritionBars}}" wx:key="key">
+          <view class="nut-bar-header">
+            <view class="nut-bar-label">
+              <text class="nut-bar-icon">{{item.icon}}</text>
+              <text class="nut-bar-name">{{item.label}}</text>
+              <text class="nut-bar-value" style="color:{{item.evalColor}}">{{item.value}} {{item.unit}}</text>
+            </view>
+            <view class="nut-eval-badge" style="background:{{item.evalColor}}">
+              <text class="nut-eval-text">{{item.eval}}</text>
+            </view>
+          </view>
+          <view class="nut-bar-track">
+            <view class="nut-bar-fill" style="width:{{item.percent}}%;background:{{item.barColor}}"></view>
+          </view>
+          <view class="nut-bar-footer">
+            <text class="nut-bar-percent text-sm text-secondary">占每日参考量 {{item.percent}}%</text>
+            <text class="nut-bar-daily text-sm text-secondary">参考总量：{{item.dailyRef}} {{item.unit}}</text>
+          </view>
+        </view>
+
+        <!-- 营养建议 -->
+        <view class="nut-tips-box" wx:if="{{result.nutritionTips}}">
+          <text class="nut-tips-icon">💡</text>
+          <text class="nut-tips-text">{{result.nutritionTips}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- ── 肾友版做法步骤 ───────────────────── -->
+    <view class="card" wx:if="{{result.steps && result.steps.length > 0}}">
+      <view class="card-title" bindtap="toggleSteps">
+        <view class="card-title-left">
+          <text class="card-title-icon">👨‍🍳</text>
+          <text>肾友版做法</text>
+          <text class="card-count">{{result.steps.length}}步</text>
+        </view>
+        <text class="card-expand-icon">{{stepsExpanded ? '▲' : '▼'}}</text>
+      </view>
+
+      <view wx:if="{{stepsExpanded}}">
+        <view class="step-card" wx:for="{{result.steps}}" wx:key="stepNo">
+          <view class="step-head">
+            <view class="step-num-badge">{{item.stepNo}}</view>
+            <text class="step-title">{{item.title}}</text>
+          </view>
+          <view class="step-detail">{{item.detail}}</view>
+          <view class="step-kidney-care" wx:if="{{item.kidneyCare}}">
+            <text class="kidney-icon">🫘</text>
+            <text class="kidney-text">{{item.kidneyCare}}</text>
+          </view>
+        </view>
+
+        <!-- 综合烹饪贴士 -->
+        <view class="cook-tips-box" wx:if="{{result.cookTips}}">
+          <view class="cook-tips-title">💡 综合烹饪贴士</view>
+          <view class="cook-tips-text">{{result.cookTips}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- ── 更优替代推荐 ──────────────────────── -->
+    <view class="card" wx:if="{{result.alternatives && result.alternatives.length > 0}}">
+      <view class="card-title">
+        <text class="card-title-icon">🥗</text>
+        <text>更优选择推荐</text>
+      </view>
+      <view
+        class="alt-item"
+        wx:for="{{result.alternatives}}"
+        wx:key="name"
+        bindtap="viewAlternative"
+        data-name="{{item.name}}"
+      >
+        <view class="alt-score-circle" style="border-color:{{item.scoreColor}}">
+          <text class="alt-score-num" style="color:{{item.scoreColor}}">{{item.score}}</text>
+        </view>
+        <view class="alt-info">
+          <view class="alt-name-row">
+            <text class="alt-name">{{item.name}}</text>
+            <text class="alt-safe-icon">{{item.safeLevelIcon}}</text>
+          </view>
+          <text class="alt-reason text-sm text-secondary">{{item.reason}}</text>
+        </view>
+        <text class="alt-arrow">›</text>
+      </view>
+    </view>
+
+    <!-- ── 医疗免责声明 ──────────────────────── -->
+    <view class="medical-note" wx:if="{{result.medicalNote}}">
+      <text class="medical-icon">⚕️</text>
+      <text class="medical-text">{{result.medicalNote}}</text>
+    </view>
+
+    <!-- ── 底部操作按钮 ──────────────────────── -->
+    <view class="action-bar">
+      <button class="btn-outline" bindtap="toggleFavorite">
+        <text>{{isFavorited ? '❤️' : '🤍'}}</text>
+        <text> {{isFavorited ? '已收藏' : '收藏'}}</text>
+      </button>
+      <button class="btn-primary" bindtap="addToRecord">
+        <text>📝 记录饮食</text>
+      </button>
+    </view>
+
+  </block>
+
+  <!-- ════════════════ 错误状态 ════════════════ -->
+  <view class="error-card" wx:if="{{!loading && error}}">
+    <view class="error-icon">{{_quotaExceeded ? '🔒' : '😔'}}</view>
+    <view class="error-title">{{_quotaExceeded ? '今日分析次数已用完' : '分析失败'}}</view>
+    <view class="error-msg">{{error}}</view>
+    <view wx:if="{{_quotaExceeded}}" class="quota-actions">
+      <button class="btn-vip" bindtap="goVip">🌿 加入会员 ¥9.9/月</button>
+    </view>
+    <button class="retry-btn" bindtap="retryAnalyze" wx:if="{{!_quotaExceeded}}">重新分析</button>
+    <button class="retry-btn btn-vip" bindtap="goVip" wx:if="{{_quotaExceeded}}">🌿 加入会员解锁</button>
+  </view>
+  <view class="portion-modal-mask" wx:if="{{showPortionModal}}" bindtap="closePortionModal">
+    <view class="portion-modal">
+      <view class="portion-header">
+        <text class="portion-title">📝 记录饮食</text>
+        <text class="portion-dish">{{result.dishName}}</text>
+      </view>
+
+      <view class="portion-scroll">
+        <!-- 餐段选择 -->
+        <view class="meal-select-row">
+          <text class="meal-select-label">选择餐段</text>
+          <view class="meal-select">
+            <view
+              class="meal-option {{selectedMealType === item.value ? 'active' : ''}}"
+              wx:for="{{mealOptions}}"
+              wx:key="value"
+              catchtap="selectMealType"
+              data-value="{{item.value}}"
+            >
+              <text class="meal-icon">{{item.icon}}</text>
+              <text>{{item.label}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 总量滑块（主控） -->
+        <view class="portion-slider-row">
+          <view class="portion-slider-label">
+            <text class="portion-slider-name">本次摄入量</text>
+            <text class="portion-slider-val">{{portionGrams}}g</text>
+          </view>
+          <slider
+            class="portion-slider"
+            min="{{portionMin}}"
+            max="{{portionMax}}"
+            step="{{portionStep}}"
+            value="{{portionGrams}}"
+            activeColor="#52C41A"
+            backgroundColor="#E8E8E8"
+            block-size="20"
+            bindchange="onPortionChange"
+            bindchanging="onPortionChanging"
+          />
+          <view class="portion-slider-range">
+            <text>{{portionMin}}g</text>
+            <text>{{portionMax}}g</text>
+          </view>
+        </view>
+
+        <!-- 营养素跟随显示 -->
+        <view class="portion-nut-list">
+          <view class="portion-nut-item" wx:for="{{portionNutrients}}" wx:key="key">
+            <view class="portion-nut-left">
+              <text class="portion-nut-icon">{{item.icon}}</text>
+              <text class="portion-nut-name">{{item.label}}</text>
+            </view>
+            <view class="portion-nut-right">
+              <text class="portion-nut-val" style="color:{{item.color}}">{{item.value}} {{item.unit}}</text>
+              <text class="portion-nut-ratio">≈ {{item.percent}}% 每日参考量</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 底部按钮 -->
+      <view class="portion-btns">
+        <button class="portion-btn-cancel" catchtap="closePortionModal">取消</button>
+        <button class="portion-btn-confirm" catchtap="confirmRecord">确认记录</button>
+      </view>
+    </view>
+  </view>
+
+</view>

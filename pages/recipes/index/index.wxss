@@ -1,0 +1,510 @@
+/* pages/recipes/index/index.wxss - 食谱主页（恢复原白/蓝/绿色清爽风格） */
+:root {
+  --primary: #4A90D9;
+  --primary-light: #EEF6FF;
+  --success: #52C41A;
+  --warning: #FAAD14;
+  --danger: #FF4D4F;
+  --text-primary: #2C3E50;
+  --text-secondary: #7F8C8D;
+  --text-light: #A0AEC0;
+  --bg-page: #F5F7FA;
+  --bg-white: #FFFFFF;
+  --border: #E8EEF5;
+  --radius: 24rpx;
+  --shadow-card: 0 8rpx 28rpx rgba(74, 144, 217, 0.10);
+}
+
+.page-wrap {
+  min-height: 100vh;
+  padding-bottom: 120rpx;
+  background: var(--bg-page);
+  color: var(--text-primary);
+}
+
+/* 顶部 Hero + 搜索 */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 44rpx 32rpx 34rpx;
+  background: linear-gradient(135deg, #EAF6FF 0%, #F8FBFF 55%, #FFFFFF 100%);
+  border-radius: 0 0 42rpx 42rpx;
+  box-shadow: 0 8rpx 28rpx rgba(74, 144, 217, 0.10);
+}
+
+.hero-bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(74, 144, 217, 0.12);
+}
+
+.circle-1 {
+  width: 260rpx;
+  height: 260rpx;
+  right: -90rpx;
+  top: -80rpx;
+}
+
+.circle-2 {
+  width: 160rpx;
+  height: 160rpx;
+  left: -60rpx;
+  bottom: 20rpx;
+  background: rgba(82, 196, 26, 0.10);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.hero-greeting {
+  display: block;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 8rpx;
+}
+
+.hero-title {
+  display: block;
+  font-size: 46rpx;
+  line-height: 58rpx;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.stage-badge {
+  flex-shrink: 0;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(74, 144, 217, 0.12);
+  color: var(--primary);
+  font-size: 23rpx;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  display: block;
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.search-box {
+  margin-top: 28rpx;
+  height: 88rpx;
+  border-radius: 28rpx;
+  background: var(--bg-white);
+  display: flex;
+  align-items: center;
+  padding: 0 22rpx;
+  box-shadow: 0 8rpx 24rpx rgba(44, 62, 80, 0.08);
+  border: 2rpx solid transparent;
+}
+
+.search-focused {
+  border-color: rgba(74, 144, 217, 0.55);
+}
+
+.search-icon {
+  font-size: 30rpx;
+  margin-right: 14rpx;
+  color: var(--text-light);
+}
+
+.search-input {
+  flex: 1;
+  height: 88rpx;
+  font-size: 28rpx;
+  color: var(--text-primary);
+}
+
+.search-placeholder {
+  color: #B7C3D4;
+}
+
+.clear-btn {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: #EDF2F7;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  line-height: 44rpx;
+}
+
+.action-row {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 22rpx;
+}
+
+.primary-action,
+.secondary-action {
+  flex: 1;
+  height: 76rpx;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.primary-action {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #4A90D9 0%, #66B5F2 100%);
+  box-shadow: 0 8rpx 20rpx rgba(74, 144, 217, 0.22);
+}
+
+.secondary-action {
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1rpx solid rgba(74, 144, 217, 0.18);
+}
+
+.action-icon {
+  font-size: 28rpx;
+}
+
+/* 快捷标签 */
+.quick-tags {
+  padding: 24rpx 32rpx 6rpx;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.quick-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 58rpx;
+  padding: 0 24rpx;
+  margin-right: 14rpx;
+  border-radius: 999rpx;
+  background: var(--bg-white);
+  color: var(--text-secondary);
+  font-size: 24rpx;
+  font-weight: 600;
+  box-shadow: 0 4rpx 16rpx rgba(44, 62, 80, 0.05);
+}
+
+.quick-tag.more {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+/* 通用卡片 */
+.card {
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  box-sizing: border-box;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22rpx;
+}
+
+.card-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.card-subtitle {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: var(--text-light);
+}
+
+.text-secondary { color: var(--text-secondary); }
+.text-light { color: var(--text-light); }
+
+/* 今日摄入卡片 */
+.today-card {
+  margin: 24rpx 32rpx 16rpx;
+  padding: 26rpx 24rpx 22rpx;
+}
+
+.nutrition-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nutrition-item {
+  flex: 1;
+  text-align: center;
+  padding: 0 4rpx;
+  box-sizing: border-box;
+}
+
+.nut-value {
+  font-size: 30rpx;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4rpx;
+}
+
+.nut-unit {
+  font-size: 16rpx;
+  color: var(--text-secondary);
+  margin-bottom: 2rpx;
+}
+
+.nut-label {
+  font-size: 20rpx;
+  color: var(--text-secondary);
+  margin-bottom: 8rpx;
+}
+
+.nut-bar {
+  height: 6rpx;
+  background: var(--border);
+  border-radius: 3rpx;
+  overflow: hidden;
+}
+
+.nut-bar-fill {
+  height: 100%;
+  border-radius: 3rpx;
+  transition: width 0.5s ease;
+}
+
+/* 收藏食谱 */
+.favorites-scroll {
+  padding: 0 32rpx 16rpx;
+  white-space: nowrap;
+}
+
+.section-title {
+  padding: 24rpx 32rpx 0;
+  margin-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  font-size: 31rpx;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.section-sub-text {
+  font-size: 22rpx !important;
+  font-weight: 400 !important;
+  color: var(--text-light) !important;
+}
+
+.refresh-btn {
+  margin-left: auto;
+  font-size: 22rpx;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 8rpx 20rpx;
+  border-radius: 100rpx;
+  font-weight: 600;
+}
+
+.refresh-spin {
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.fav-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-white);
+  border-radius: var(--radius);
+  padding: 24rpx 28rpx;
+  margin-right: 16rpx;
+  box-shadow: var(--shadow-card);
+  min-width: 160rpx;
+}
+
+.fav-icon {
+  font-size: 40rpx;
+  margin-bottom: 8rpx;
+}
+
+.fav-name {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+  max-width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.safe-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+}
+.safe-dot.safe, .safe-safe { background: #F0FFF0; color: var(--success); }
+.safe-dot.warning, .safe-warning { background: #FFF7E6; color: var(--warning); }
+.safe-dot.danger, .safe-danger { background: #FFF1F0; color: var(--danger); }
+
+/* 推荐食谱 */
+.recipe-list {
+  padding: 16rpx 32rpx 0;
+}
+
+.recipe-card {
+  margin-bottom: 20rpx;
+  padding: 28rpx 32rpx;
+}
+
+.recipe-card:active,
+.fav-card:active,
+.quick-tag:active,
+.primary-action:active,
+.secondary-action:active {
+  opacity: 0.86;
+  transform: scale(0.985);
+}
+
+.recipe-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+  margin-bottom: 10rpx;
+}
+
+.recipe-name {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 42rpx;
+}
+
+.recipe-category-tag {
+  display: inline-block;
+  font-size: 20rpx;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 2rpx 14rpx;
+  border-radius: 100rpx;
+  margin-bottom: 8rpx;
+}
+
+.safe-badge {
+  flex-shrink: 0;
+  height: 46rpx;
+  line-height: 46rpx;
+  border-radius: 999rpx;
+  padding: 0 18rpx;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.safe-badge.safe,
+.safe-badge.safe-safe {
+  background: #F0FFF0;
+  color: var(--success);
+}
+.safe-badge.warning,
+.safe-badge.safe-warning {
+  background: #FFF7E6;
+  color: var(--warning);
+}
+.safe-badge.danger,
+.safe-badge.safe-danger {
+  background: #FFF1F0;
+  color: var(--danger);
+}
+
+.recipe-desc {
+  display: block;
+  margin-bottom: 16rpx;
+  line-height: 1.5;
+  font-size: 25rpx;
+}
+
+.recipe-nutrition {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.rn-row {
+  display: flex;
+  align-items: center;
+}
+
+.rn-row-main {
+  justify-content: space-between;
+}
+
+.rn-row-calorie {
+  padding-top: 10rpx;
+  border-top: 1rpx solid var(--border);
+}
+
+.rn-item {
+  display: flex;
+  align-items: baseline;
+  gap: 4rpx;
+}
+
+.rn-val {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.rn-calorie-val {
+  font-size: 28rpx;
+  color: var(--primary);
+}
+
+.rn-label {
+  font-size: 22rpx;
+}
+
+/* 查看更多链接 */
+.view-more-wrap {
+  margin: 24rpx 32rpx 0;
+  padding: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rpx;
+}
+
+.view-more-wrap:active {
+  opacity: 0.6;
+}
+
+.view-more-text {
+  font-size: 24rpx;
+  color: var(--primary);
+}
+
+.view-more-arrow {
+  font-size: 28rpx;
+  color: var(--primary);
+  font-weight: 600;
+}

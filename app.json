@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/empty/index",
+    "pages/index/index",
+    "pages/recipes/index/index",
+    "pages/profile/index/index",
+    "pages/chat/index/index",
+    "pages/login/index/index",
+    "pages/onboard/index",
+    "pages/recipes/category/index",
+    "pages/recipes/photo-analyze/index",
+    "pages/recipes/detail/index",
+    "pages/records/index/index",
+    "pages/foods/index/index",
+    "pages/reports/index/index",
+    "pages/reports/detail/index"
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4A90D9",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/chat.png",
+        "selectedIconPath": "images/chat_selected.png"
+      },
+      {
+        "pagePath": "pages/recipes/index/index",
+        "text": "食谱",
+        "iconPath": "images/food.png",
+        "selectedIconPath": "images/food_selected.png"
+      },
+      {
+        "pagePath": "pages/records/index/index",
+        "text": "记录",
+        "iconPath": "images/record.png",
+        "selectedIconPath": "images/record_selected.png"
+      },
+      {
+        "pagePath": "pages/profile/index/index",
+        "text": "我的",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile_selected.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4A90D9",
+    "navigationBarTitleText": "肾友食光",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F7FA"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

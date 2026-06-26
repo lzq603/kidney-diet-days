@@ -1,0 +1,138 @@
+<!-- pages/recipes/category/index.wxml - 菜谱库 -->
+<view class="page-wrap">
+
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-box">
+      <text class="search-icon">🔍</text>
+      <input
+        class="search-input"
+        placeholder="搜索菜谱，如：白菜炖豆腐..."
+        placeholder-class="search-placeholder"
+        value="{{keyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="doSearch"
+        confirm-type="search"
+      />
+      <text class="search-clear" wx:if="{{keyword}}" bindtap="clearSearch">✕</text>
+    </view>
+  </view>
+
+  <!-- 分类 Tab -->
+  <scroll-view class="category-tabs" scroll-x enable-flex>
+    <view
+      class="cat-tab {{activeCategory === item ? 'active' : ''}}"
+      wx:for="{{categories}}"
+      wx:key="*this"
+      bindtap="selectCategory"
+      data-cat="{{item}}"
+    >{{item}}</view>
+  </scroll-view>
+
+  <!-- 筛选信息栏 -->
+  <view class="filter-bar">
+    <text class="filter-info">共 {{total}} 道菜谱</text>
+    <scroll-view class="level-filters" scroll-x enable-flex>
+      <view
+        class="level-chip {{activeLevel === item.key ? 'active' : ''}}"
+        wx:for="{{levelFilters}}"
+        wx:key="key"
+        bindtap="selectLevel"
+        data-level="{{item.key}}"
+      >{{item.label}}</view>
+    </scroll-view>
+  </view>
+
+  <!-- 菜谱卡片列表 -->
+  <scroll-view
+    class="recipe-list"
+    scroll-y
+    style="height: {{listHeight}}px;"
+    bindscrolltolower="loadMore"
+    lower-threshold="200"
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <!-- 加载状态 -->
+    <view class="loading-state" wx:if="{{loading && recipes.length === 0}}">
+      <view class="loading-spinner"></view>
+      <text>加载中...</text>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{!loading && recipes.length === 0}}">
+      <text class="empty-icon">🍽️</text>
+      <text class="empty-text">没有找到相关菜谱</text>
+      <text class="empty-hint">试试其他关键词或分类</text>
+    </view>
+
+    <!-- 菜谱卡片 -->
+    <view
+      class="recipe-card"
+      wx:for="{{recipes}}"
+      wx:key="id"
+      bindtap="viewDetail"
+      data-index="{{index}}"
+    >
+      <view class="recipe-card-top">
+        <view class="recipe-name-area">
+          <text class="recipe-name">{{item.name}}</text>
+          <text class="recipe-cat-tag" wx:if="{{item.category}}">{{item.category}}</text>
+        </view>
+        <view class="safe-badge safe-{{item.safeLevel}}">
+          {{item.safeLevel === 'safe' ? '✅ 可食' : item.safeLevel === 'warning' ? '⚠️ 限量' : '🚫 慎食'}}
+        </view>
+      </view>
+
+      <!-- 描述 -->
+      <view class="recipe-desc" wx:if="{{item.desc}}">{{item.desc}}</view>
+
+      <!-- 营养数据网格 -->
+      <view class="nut-grid" wx:if="{{item.nutrition}}">
+        <view class="nut-cell" wx:if="{{item.nutrition.calories}}">
+          <text class="nut-cell-val" style="color:#4A90D9">{{item.nutrition.calories}}</text>
+          <text class="nut-cell-unit">kcal</text>
+          <text class="nut-cell-label">热量</text>
+        </view>
+        <view class="nut-cell" wx:if="{{item.nutrition.protein}}">
+          <text class="nut-cell-val" style="color:#52C41A">{{item.nutrition.protein}}</text>
+          <text class="nut-cell-unit">g</text>
+          <text class="nut-cell-label">蛋白质</text>
+        </view>
+        <view class="nut-cell nut-highlight" wx:if="{{item.nutrition.potassium}}">
+          <text class="nut-cell-val" style="color:{{item.nutrition.potassium > 300 ? '#E74C3C' : item.nutrition.potassium > 200 ? '#FAAD14' : '#52C41A'}}">{{item.nutrition.potassium}}</text>
+          <text class="nut-cell-unit">mg</text>
+          <text class="nut-cell-label">钾 ★</text>
+        </view>
+        <view class="nut-cell nut-highlight" wx:if="{{item.nutrition.phosphorus}}">
+          <text class="nut-cell-val" style="color:{{item.nutrition.phosphorus > 120 ? '#E74C3C' : item.nutrition.phosphorus > 80 ? '#FAAD14' : '#52C41A'}}">{{item.nutrition.phosphorus}}</text>
+          <text class="nut-cell-unit">mg</text>
+          <text class="nut-cell-label">磷 ★</text>
+        </view>
+        <view class="nut-cell nut-highlight" wx:if="{{item.nutrition.sodium}}">
+          <text class="nut-cell-val" style="color:{{item.nutrition.sodium > 400 ? '#E74C3C' : item.nutrition.sodium > 200 ? '#FAAD14' : '#722ED1'}}">{{item.nutrition.sodium}}</text>
+          <text class="nut-cell-unit">mg</text>
+          <text class="nut-cell-label">钠 ★</text>
+        </view>
+      </view>
+
+      <!-- 标签行 -->
+      <view class="tag-row" wx:if="{{item.tags && item.tags.length > 0}}">
+        <text
+          class="mini-tag"
+          wx:for="{{item.tags}}"
+          wx:for-item="tag"
+          wx:key="*this"
+        >{{tag}}</text>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="load-more" wx:if="{{recipes.length > 0}}">
+      <text wx:if="{{loading}}" class="load-more-text">加载中...</text>
+      <text wx:elif="{{hasMore}}" class="load-more-text">上滑加载更多...</text>
+      <text wx:else class="load-more-done">— 已经到底了 —</text>
+    </view>
+  </scroll-view>
+
+</view>

@@ -1,0 +1,126 @@
+/* pages/empty/index.wxss - 空白页面样式 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+/* 加载状态 */
+.loading-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 120rpx;
+  height: 120rpx;
+  border: 8rpx solid #f3f3f3;
+  border-top: 8rpx solid #4A90D9;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 40rpx;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 错误状态 */
+.error-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: white;
+  padding: 60rpx 40rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+  max-width: 600rpx;
+  width: 100%;
+}
+
+.error-icon {
+  font-size: 80rpx;
+  margin-bottom: 30rpx;
+}
+
+.error-text {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 40rpx;
+  line-height: 1.5;
+}
+
+.retry-btn {
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 10rpx;
+  border: none;
+}
+
+/* 跳转状态 */
+.redirect-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.redirect-text {
+  font-size: 36rpx;
+  color: #4A90D9;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.hint-text {
+  font-size: 26rpx;
+  color: #888;
+}
+
+/* 响应式调整 */
+@media (max-width: 750rpx) {
+  .loading-spinner {
+    width: 100rpx;
+    height: 100rpx;
+    border-width: 6rpx;
+  }
+  
+  .loading-text {
+    font-size: 28rpx;
+  }
+  
+  .error-section {
+    padding: 40rpx 30rpx;
+  }
+  
+  .error-icon {
+    font-size: 60rpx;
+  }
+  
+  .error-text {
+    font-size: 26rpx;
+  }
+}

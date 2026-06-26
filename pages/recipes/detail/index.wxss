@@ -1,0 +1,962 @@
+/* pages/recipes/detail/index.wxss */
+
+.detail-wrap {
+  padding: 24rpx 24rpx 160rpx;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* ═══════════════════════════════════════════════
+   加载动画
+═══════════════════════════════════════════════ */
+.loading-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 72rpx 48rpx;
+  text-align: center;
+  margin-top: 40rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.loading-robot {
+  font-size: 96rpx;
+  display: inline-block;
+  animation: bounce 1.2s ease-in-out infinite;
+  margin-bottom: 28rpx;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16rpx); }
+}
+
+.loading-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+.loading-subtitle {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  margin-bottom: 40rpx;
+}
+
+.loading-steps {
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 32rpx;
+}
+
+.load-step {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 26rpx;
+  color: var(--text-light);
+  padding: 12rpx 0;
+  transition: color 0.4s;
+}
+
+.load-step.done {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.load-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: var(--border);
+  flex-shrink: 0;
+  transition: background 0.4s;
+}
+
+.load-step.done .load-dot {
+  background: var(--success);
+}
+
+.load-check {
+  color: var(--success);
+  font-size: 24rpx;
+  margin-left: auto;
+}
+
+.loading-bar-wrap {
+  width: 100%;
+  height: 8rpx;
+  background: var(--bg);
+  border-radius: 100rpx;
+  overflow: hidden;
+}
+
+.loading-bar {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 100rpx;
+  transition: width 0.5s ease;
+}
+
+/* ═══════════════════════════════════════════════
+   通用卡片
+═══════════════════════════════════════════════ */
+.card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 28rpx 28rpx 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.card-title-left {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.card-title-icon {
+  font-size: 36rpx;
+  margin-right: 8rpx;
+}
+
+.card-title text:nth-child(2) {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.card-count {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  background: var(--bg);
+  padding: 4rpx 12rpx;
+  border-radius: 100rpx;
+  margin-left: 8rpx;
+}
+
+.card-sub {
+  margin-left: 4rpx;
+}
+
+.card-expand-icon {
+  font-size: 24rpx;
+  color: var(--text-light);
+  padding: 8rpx;
+}
+
+/* ═══════════════════════════════════════════════
+   安全等级 Banner
+═══════════════════════════════════════════════ */
+.safe-banner {
+  border-radius: var(--radius-lg);
+  padding: 32rpx 28rpx;
+  margin-bottom: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  flex: 1;
+}
+
+.banner-icon { font-size: 64rpx; flex-shrink: 0; }
+
+.banner-info { flex: 1; }
+
+.banner-dish {
+  font-size: 42rpx;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6rpx;
+}
+
+.banner-label {
+  font-size: 28rpx;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 8rpx;
+}
+
+.banner-stage {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.2);
+  padding: 4rpx 14rpx;
+  border-radius: 100rpx;
+  display: inline-block;
+}
+
+/* 评分圆 */
+.score-circle {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 3rpx solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  backdrop-filter: blur(4px);
+}
+
+.score-num {
+  font-size: 44rpx;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.score-unit {
+  font-size: 20rpx;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.2;
+}
+
+.score-label {
+  font-size: 18rpx;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2rpx;
+}
+
+/* AI 来源标注 */
+.source-tag {
+  display: flex;
+  align-items: center;
+  padding: 10rpx 20rpx;
+  background: var(--primary-light);
+  border-radius: 100rpx;
+  margin-bottom: 20rpx;
+  align-self: flex-start;
+}
+
+.source-text {
+  font-size: 22rpx;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.source-tip {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════════
+   安全分析卡
+═══════════════════════════════════════════════ */
+.reason-text {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 20rpx;
+}
+
+/* 警告列表 */
+.warnings-wrap {
+  background: #FFF7E6;
+  border-radius: var(--radius-sm);
+  padding: 16rpx 20rpx;
+  border-left: 4rpx solid #FAAD14;
+  margin-bottom: 20rpx;
+}
+
+.warning-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10rpx;
+  padding: 6rpx 0;
+}
+
+.warning-icon { font-size: 24rpx; flex-shrink: 0; margin-top: 2rpx; }
+
+.warning-text {
+  font-size: 26rpx;
+  color: #7C5200;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* 烹饪方式 */
+.cook-method-wrap { margin-top: 8rpx; }
+
+.cook-method-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.cook-method-label {
+  font-size: 24rpx;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-top: 6rpx;
+}
+
+.cook-method-label.recommend { color: #389E0D; }
+.cook-method-label.avoid { color: #CF1322; }
+
+.cook-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.cook-tag {
+  font-size: 22rpx;
+  padding: 6rpx 18rpx;
+  border-radius: 100rpx;
+}
+
+.cook-tag.recommend {
+  background: #F6FFED;
+  color: #389E0D;
+  border: 1rpx solid #B7EB8F;
+}
+
+.cook-tag.avoid {
+  background: #FFF1F0;
+  color: #CF1322;
+  border: 1rpx solid #FFA39E;
+}
+
+/* ═══════════════════════════════════════════════
+   食材安全评级
+═══════════════════════════════════════════════ */
+.ing-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--border);
+  gap: 16rpx;
+}
+
+.ing-item:last-child { border-bottom: none; }
+
+.ing-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+  flex: 1;
+}
+
+.ing-cat-icon { font-size: 36rpx; flex-shrink: 0; margin-top: 4rpx; }
+
+.ing-info { flex: 1; }
+
+.ing-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4rpx;
+  margin-bottom: 6rpx;
+}
+
+.ing-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ing-tip {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 6rpx;
+  display: block;
+}
+
+.risk-tag {
+  font-size: 20rpx;
+  color: #D48806;
+  background: #FFFBE6;
+  border: 1rpx solid #FFE58F;
+  padding: 3rpx 12rpx;
+  border-radius: 100rpx;
+}
+
+.ing-badge {
+  padding: 6rpx 18rpx;
+  border-radius: 100rpx;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.ing-badge-text {
+  font-size: 22rpx;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════
+   营养分析（进度条版）
+═══════════════════════════════════════════════ */
+.nut-bar-item {
+  margin-bottom: 28rpx;
+}
+
+.nut-bar-item:last-of-type { margin-bottom: 0; }
+
+.nut-bar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.nut-bar-label {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.nut-bar-icon { font-size: 28rpx; }
+
+.nut-bar-name {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.nut-bar-value {
+  font-size: 26rpx;
+  font-weight: 700;
+  margin-left: 4rpx;
+}
+
+.nut-eval-badge {
+  padding: 4rpx 14rpx;
+  border-radius: 100rpx;
+}
+
+.nut-eval-text {
+  font-size: 20rpx;
+  color: #fff;
+  font-weight: 600;
+}
+
+.nut-bar-track {
+  width: 100%;
+  height: 12rpx;
+  background: var(--bg);
+  border-radius: 100rpx;
+  overflow: hidden;
+  margin-bottom: 8rpx;
+}
+
+.nut-bar-fill {
+  height: 100%;
+  border-radius: 100rpx;
+  transition: width 0.6s ease;
+  min-width: 4rpx;
+}
+
+.nut-bar-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nut-tips-box {
+  display: flex;
+  gap: 12rpx;
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  padding: 16rpx 20rpx;
+  margin-top: 20rpx;
+}
+
+.nut-tips-icon { font-size: 28rpx; flex-shrink: 0; }
+
+.nut-tips-text {
+  font-size: 24rpx;
+  color: var(--primary-dark);
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   做法步骤
+═══════════════════════════════════════════════ */
+.step-card {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.step-card:last-of-type { margin-bottom: 0; }
+
+.step-head {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.step-num-badge {
+  width: 48rpx;
+  height: 48rpx;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.step-detail {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  line-height: 1.8;
+  margin-bottom: 12rpx;
+  padding-left: 64rpx;
+}
+
+.step-kidney-care {
+  display: flex;
+  gap: 10rpx;
+  background: #E6F7FF;
+  border-radius: var(--radius-sm);
+  padding: 12rpx 16rpx;
+  border-left: 4rpx solid #1890FF;
+  margin-left: 64rpx;
+}
+
+.kidney-icon { font-size: 24rpx; flex-shrink: 0; }
+
+.kidney-text {
+  font-size: 22rpx;
+  color: #0050B3;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* 综合烹饪贴士 */
+.cook-tips-box {
+  background: var(--primary-light);
+  border-radius: var(--radius-sm);
+  padding: 20rpx 24rpx;
+  margin-top: 16rpx;
+}
+
+.cook-tips-title {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10rpx;
+}
+
+.cook-tips-text {
+  font-size: 24rpx;
+  color: var(--primary-dark);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════
+   替代推荐
+═══════════════════════════════════════════════ */
+.alt-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.alt-item:last-child { border-bottom: none; }
+
+.alt-score-circle {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  border: 3rpx solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.alt-score-num {
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.alt-info { flex: 1; }
+
+.alt-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-bottom: 6rpx;
+}
+
+.alt-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.alt-safe-icon { font-size: 24rpx; }
+
+.alt-reason {
+  line-height: 1.5;
+}
+
+.alt-arrow {
+  font-size: 44rpx;
+  color: var(--text-light);
+}
+
+/* ═══════════════════════════════════════════════
+   医疗免责
+═══════════════════════════════════════════════ */
+.medical-note {
+  display: flex;
+  gap: 10rpx;
+  align-items: flex-start;
+  padding: 16rpx 20rpx;
+  background: #F0F0F0;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20rpx;
+}
+
+.medical-icon { font-size: 24rpx; flex-shrink: 0; margin-top: 2rpx; }
+
+.medical-text {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   底部操作按钮
+═══════════════════════════════════════════════ */
+.action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 28rpx;
+  background: var(--bg-white);
+  display: flex;
+  gap: 20rpx;
+  box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.08);
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+}
+
+.btn-outline {
+  flex: 1;
+  background: transparent !important;
+  color: var(--primary) !important;
+  border: 2rpx solid var(--primary) !important;
+  border-radius: 100rpx !important;
+  height: 88rpx !important;
+  line-height: normal !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 28rpx !important;
+  font-weight: 600 !important;
+}
+
+.btn-primary {
+  flex: 1.6;
+  background: var(--primary) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 100rpx !important;
+  height: 88rpx !important;
+  line-height: normal !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  font-size: 30rpx !important;
+  font-weight: 600 !important;
+}
+
+/* ═══════════════════════════════════════════════
+   错误状态
+═══════════════════════════════════════════════ */
+.error-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: 80rpx 48rpx;
+  text-align: center;
+  margin-top: 40rpx;
+  box-shadow: var(--shadow-card);
+}
+
+.error-icon { font-size: 80rpx; margin-bottom: 24rpx; display: block; }
+.error-title { font-size: 36rpx; font-weight: 700; color: var(--text-primary); margin-bottom: 16rpx; }
+.error-msg { font-size: 26rpx; color: var(--text-secondary); margin-bottom: 24rpx; line-height: 1.6; }
+.quota-actions { margin-bottom: 24rpx; }
+.btn-vip {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%) !important;
+  color: #7A3B00 !important; border-radius: 100rpx !important;
+  height: 88rpx !important; line-height: 88rpx !important; font-size: 28rpx !important;
+  font-weight: 700 !important; border: none !important;
+  width: 100% !important; box-sizing: border-box !important;
+  padding: 0 20rpx !important; white-space: nowrap !important;
+}
+
+.retry-btn {
+  background: var(--primary) !important;
+  color: #fff !important;
+  border-radius: 100rpx !important;
+  height: 88rpx !important;
+  line-height: 88rpx !important;
+  font-size: 28rpx !important;
+  border: none !important;
+  width: 100% !important; box-sizing: border-box !important;
+  padding: 0 20rpx !important; white-space: nowrap !important;
+}
+
+/* ═══════════════════════════════════════════════
+   分量选择弹窗（记录饮食）
+═══════════════════════════════════════════════ */
+.portion-modal-mask {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  touch-action: none;
+}
+
+.portion-modal {
+  width: 100%;
+  background: var(--bg-white);
+  border-radius: 32rpx 32rpx 0 0;
+  padding: 48rpx 48rpx 0;
+  max-height: 80vh;
+  animation: slideUp .3s ease-out;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.portion-scroll {
+  flex: 1;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  margin-right: -48rpx;
+  padding-right: 48rpx;
+  height: 0;
+  min-height: 0;
+  touch-action: pan-y;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+/* 弹窗底部安全区 + 按钮区域内边距 */
+.portion-modal .portion-btns {
+  padding: 16rpx 0 calc(48rpx + env(safe-area-inset-bottom));
+  margin: 0 -48rpx;
+  padding-left: 48rpx;
+  padding-right: 48rpx;
+}
+
+.portion-header {
+  margin-bottom: 32rpx;
+  padding-bottom: 28rpx;
+  border-bottom: 1rpx solid var(--border);
+}
+
+.portion-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.portion-dish {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+/* 餐段选择 */
+.meal-select-row {
+  margin-bottom: 28rpx;
+}
+.meal-select-label {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 16rpx;
+  display: block;
+}
+.meal-select {
+  display: flex;
+  gap: 12rpx;
+}
+.meal-select .meal-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 0;
+  border-radius: 16rpx;
+  background: var(--bg, #F5F7FA);
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+.meal-select .meal-option .meal-icon {
+  font-size: 32rpx;
+  margin-bottom: 4rpx;
+}
+.meal-select .meal-option.active {
+  background: var(--primary, #4A90D9);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 滑块行 */
+.portion-slider-row {
+  margin-bottom: 36rpx;
+  padding: 0 8rpx;
+}
+
+.portion-slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16rpx;
+}
+
+.portion-slider-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.portion-slider-val {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.portion-slider {
+  width: 100%;
+  margin: 0;
+}
+
+.portion-slider-range {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: var(--text-light);
+}
+
+/* 营养素列表 */
+.portion-nut-list {
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  padding: 16rpx 28rpx;
+  margin-bottom: 32rpx;
+}
+
+.portion-nut-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 24rpx;
+}
+
+.portion-nut-left {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.portion-nut-icon { font-size: 30rpx; }
+
+.portion-nut-name {
+  font-size: 26rpx;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.portion-nut-right {
+  text-align: right;
+}
+
+.portion-nut-val {
+  font-size: 28rpx;
+  font-weight: 700;
+  display: block;
+}
+
+.portion-nut-ratio {
+  font-size: 20rpx;
+  color: var(--text-light);
+  display: block;
+  margin-top: 2rpx;
+}
+
+/* 底部按钮 */
+.portion-btns {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 8rpx;
+}
+
+.portion-btn-cancel {
+  flex: 1;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  background: var(--bg) !important;
+  color: var(--text-secondary) !important;
+  border: none !important;
+  border-radius: 100rpx !important;
+  font-size: 28rpx !important;
+  font-weight: 600 !important;
+  padding: 0 !important;
+}
+
+.portion-btn-confirm {
+  flex: 2;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  background: var(--primary) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 100rpx !important;
+  font-size: 28rpx !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+}

@@ -1,0 +1,2099 @@
+[
+  {
+    "name": "清蒸冬瓜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "低钾低磷低钠，适合各期肾友，清淡少盐烹饪更佳",
+    "nutrition": {
+      "calories": "42kcal",
+      "protein": "0.5g",
+      "potassium": "125mg",
+      "phosphorus": "15mg",
+      "sodium": "18mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "低蛋白",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "白菜炖粉条",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "白菜低钾低磷，粉条低蛋白，是肾友理想的炖菜选择",
+    "nutrition": {
+      "calories": "95kcal",
+      "protein": "1.8g",
+      "potassium": "180mg",
+      "phosphorus": "35mg",
+      "sodium": "120mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "主食替代",
+      "炖菜"
+    ]
+  },
+  {
+    "name": "凉拌黄瓜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "黄瓜含水量高、钾含量极低，清爽开胃，夏季推荐",
+    "nutrition": {
+      "calories": "18kcal",
+      "protein": "0.8g",
+      "potassium": "102mg",
+      "phosphorus": "24mg",
+      "sodium": "5mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "凉菜",
+      "低热量"
+    ]
+  },
+  {
+    "name": "清炒西葫芦",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "钾磷含量均很低，快炒即可保留口感和营养",
+    "nutrition": {
+      "calories": "22kcal",
+      "protein": "1.2g",
+      "potassium": "145mg",
+      "phosphorus": "33mg",
+      "sodium": "8mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "蒸茄子",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "茄子蒸熟后蘸少量调料食用，少油健康，钾含量适中偏低",
+    "nutrition": {
+      "calories": "25kcal",
+      "protein": "1.1g",
+      "potassium": "190mg",
+      "phosphorus": "28mg",
+      "sodium": "6mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "蒸菜",
+      "少油"
+    ]
+  },
+  {
+    "name": "白萝卜排骨汤（去油）",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "萝卜低钾低磷好食材；排骨需限量，建议去浮油后只喝汤吃萝卜",
+    "nutrition": {
+      "calories": "120kcal",
+      "protein": "9g",
+      "potassium": "280mg",
+      "phosphorus": "85mg",
+      "sodium": "200mg"
+    },
+    "tags": [
+      "汤品类",
+      "肉类",
+      "需焯水"
+    ]
+  },
+  {
+    "name": "冬瓜丸子汤",
+    "category": "汤品类",
+    "safeLevel": "safe",
+    "desc": "冬瓜利尿消肿，搭配少量鸡肉丸或瘦猪肉丸，清淡鲜美",
+    "nutrition": {
+      "calories": "78kcal",
+      "protein": "6g",
+      "potassium": "165mg",
+      "phosphorus": "55mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "汤品类",
+      "低钠",
+      "利水消肿"
+    ]
+  },
+  {
+    "name": "西红柿鸡蛋汤（少盐）",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "番茄和鸡蛋均为限量食材，控制用量（半个番茄+一个蛋）可适量食用",
+    "nutrition": {
+      "calories": "88kcal",
+      "protein": "6.5g",
+      "potassium": "290mg",
+      "phosphorus": "95mg",
+      "sodium": "250mg"
+    },
+    "tags": [
+      "汤品类",
+      "需限量",
+      "经典家常"
+    ]
+  },
+  {
+    "name": "藕粉羹",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "优质碳水来源，低蛋白低钾低钠，肾友理想主食或加餐",
+    "nutrition": {
+      "calories": "220kcal",
+      "protein": "0.8g",
+      "potassium": "40mg",
+      "phosphorus": "30mg",
+      "sodium": "12mg"
+    },
+    "tags": [
+      "主食类",
+      "低蛋白",
+      "加餐"
+    ]
+  },
+  {
+    "name": "大米粥配咸菜（低钠版）",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "白粥是安全的低蛋白主食，但咸菜属高钠腌制食品，建议用酸豆角或凉拌菜代替",
+    "nutrition": {
+      "calories": "65kcal",
+      "protein": "1.5g",
+      "potassium": "15mg",
+      "phosphorus": "25mg",
+      "sodium": "350mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "注意控钠"
+    ]
+  },
+  {
+    "name": "馒头片（少油煎）",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "面粉制成，蛋白质含量低，用不粘锅少油煎制即可",
+    "nutrition": {
+      "calories": "180kcal",
+      "protein": "4g",
+      "potassium": "58mg",
+      "phosphorus": "70mg",
+      "sodium": "100mg"
+    },
+    "tags": [
+      "主食类",
+      "低蛋白",
+      "早餐"
+    ]
+  },
+  {
+    "name": "清蒸鲈鱼",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "淡水鱼优质蛋白来源，脂肪含量低，清蒸烹饪最健康",
+    "nutrition": {
+      "calories": "105kcal",
+      "protein": "18g",
+      "potassium": "290mg",
+      "phosphorus": "210mg",
+      "sodium": "80mg"
+    },
+    "tags": [
+      "肉类",
+      "优质蛋白",
+      "清蒸"
+    ]
+  },
+  {
+    "name": "白切鸡（去皮）",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "去皮鸡肉脂肪低、磷适中，白煮方式无需额外用油用盐",
+    "nutrition": {
+      "calories": "135kcal",
+      "protein": "22g",
+      "potassium": "220mg",
+      "phosphorus": "170mg",
+      "sodium": "65mg"
+    },
+    "tags": [
+      "肉类",
+      "优质蛋白",
+      "低脂"
+    ]
+  },
+  {
+    "name": "冬瓜焖鸡块",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "鸡胸肉切块与冬瓜同焖，冬瓜吸味又去油腻，整道菜营养均衡",
+    "nutrition": {
+      "calories": "145kcal",
+      "protein": "20g",
+      "potassium": "260mg",
+      "phosphorus": "175mg",
+      "sodium": "140mg"
+    },
+    "tags": [
+      "肉类",
+      "蔬菜搭配",
+      "焖菜"
+    ]
+  },
+  {
+    "name": "蒜泥白肉（瘦猪肉）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "瘦肉提供优质蛋白但磷偏高，蒜泥调料注意控盐控量，每周1-2次为宜",
+    "nutrition": {
+      "calories": "165kcal",
+      "protein": "21g",
+      "potassium": "270mg",
+      "phosphorus": "195mg",
+      "sodium": "280mg"
+    },
+    "tags": [
+      "肉类",
+      "需限量",
+      "凉菜"
+    ]
+  },
+  {
+    "name": "豆腐青菜汤",
+    "category": "豆制品",
+    "safeLevel": "warning",
+    "desc": "豆腐含植物蛋白和一定量的磷，CKD 3期以上每次不超过100g，搭配绿叶菜更佳",
+    "nutrition": {
+      "calories": "85kcal",
+      "protein": "6.5g",
+      "potassium": "230mg",
+      "phosphorus": "120mg",
+      "sodium": "320mg"
+    },
+    "tags": [
+      "豆制品",
+      "需限量",
+      "注意控盐"
+    ]
+  },
+  {
+    "name": "番茄炒豆腐",
+    "category": "豆制品",
+    "safeLevel": "warning",
+    "desc": "番茄酸香开胃，豆腐提供植物蛋白；肾友版建议番茄少量、豆腐控制在100g以内，少油少盐烹饪",
+    "nutrition": {
+      "calories": "96kcal",
+      "protein": "6.8g",
+      "potassium": "260mg",
+      "phosphorus": "128mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "豆制品",
+      "家常菜",
+      "需限量",
+      "少盐"
+    ]
+  },
+  {
+    "name": "白菜炖豆腐",
+    "category": "豆制品",
+    "safeLevel": "warning",
+    "desc": "经典家常菜，白菜\"拉低\"整体钾磷水平，豆腐控制在半块以内",
+    "nutrition": {
+      "calories": "92kcal",
+      "protein": "7g",
+      "potassium": "245mg",
+      "phosphorus": "130mg",
+      "sodium": "300mg"
+    },
+    "tags": [
+      "豆制品",
+      "需限量",
+      "家常菜"
+    ]
+  },
+  {
+    "name": "蒸南瓜",
+    "category": "主食/蔬菜",
+    "safeLevel": "safe",
+    "desc": "南瓜香甜软糯，钾磷含量低，可作主食也可作配菜，老少皆宜",
+    "nutrition": {
+      "calories": "45kcal",
+      "protein": "1.0g",
+      "potassium": "145mg",
+      "phosphorus": "23mg",
+      "sodium": "6mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "低蛋白",
+      "甜食替代"
+    ]
+  },
+  {
+    "name": "山药炒木耳",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "山药是不错的低蛋白淀粉食材；木耳钾含量中等偏上，提前泡发焯水可降低约30%钾",
+    "nutrition": {
+      "calories": "55kcal",
+      "protein": "2.0g",
+      "potassium": "265mg",
+      "phosphorus": "52mg",
+      "sodium": "15mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "需焯水",
+      "脆爽口感"
+    ]
+  },
+  {
+    "name": "苹果沙拉",
+    "category": "水果类",
+    "safeLevel": "safe",
+    "desc": "苹果是肾友最安全的水果之一，钾含量低，切块即食或拌少量酸奶",
+    "nutrition": {
+      "calories": "52kcal",
+      "protein": "0.3g",
+      "potassium": "107mg",
+      "phosphorus": "11mg",
+      "sodium": "1mg"
+    },
+    "tags": [
+      "水果类",
+      "加餐",
+      "低钾水果"
+    ]
+  },
+  {
+    "name": "梨子银耳羹",
+    "category": "甜品",
+    "safeLevel": "safe",
+    "desc": "梨润肺清热、银耳富含膳食纤维且钾不高，不加糖或少加糖即为健康甜品",
+    "nutrition": {
+      "calories": "62kcal",
+      "protein": "1.5g",
+      "potassium": "95mg",
+      "phosphorus": "28mg",
+      "sodium": "8mg"
+    },
+    "tags": [
+      "甜品",
+      "润燥",
+      "加餐"
+    ]
+  },
+  {
+    "name": "丝瓜炒蛋（少蛋）",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "丝瓜极低钾低磷，是肾友\"神仙菜\"；鸡蛋限量半枚至一枚，控制总磷摄入",
+    "nutrition": {
+      "calories": "98kcal",
+      "protein": "5.5g",
+      "potassium": "175mg",
+      "phosphorus": "88mg",
+      "sodium": "150mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "需限量",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "胡萝卜炖牛腩（少肉多萝卜）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "牛肉含优质蛋白但磷和嘌呤偏高，此菜关键在于\"萝卜多、牛肉少\"，炖煮时间长以软烂易消化",
+    "nutrition": {
+      "calories": "155kcal",
+      "protein": "14g",
+      "potassium": "310mg",
+      "phosphorus": "130mg",
+      "sodium": "240mg"
+    },
+    "tags": [
+      "肉类",
+      "需限量",
+      "炖菜"
+    ]
+  },
+  {
+    "name": "清炒豆芽",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "绿豆芽低钾低磷低钠，水分足口感脆，快炒1分钟即可出锅，肾友常吃蔬菜首选",
+    "nutrition": {
+      "calories": "16kcal",
+      "protein": "1.1g",
+      "potassium": "68mg",
+      "phosphorus": "22mg",
+      "sodium": "7mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "低钾",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "蒜蓉炒生菜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "生菜钾磷极低，蒜蓉爆香后快炒断生即可，清淡爽口，适合各期肾友",
+    "nutrition": {
+      "calories": "20kcal",
+      "protein": "1.2g",
+      "potassium": "120mg",
+      "phosphorus": "25mg",
+      "sodium": "40mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "低热量",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "清炒包菜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "圆白菜（卷心菜）低钾低磷，切丝清炒或手撕包菜少油版，家常必备",
+    "nutrition": {
+      "calories": "25kcal",
+      "protein": "1.3g",
+      "potassium": "170mg",
+      "phosphorus": "26mg",
+      "sodium": "27mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "家常菜",
+      "耐储存"
+    ]
+  },
+  {
+    "name": "焯水西兰花（少量）",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "西兰花钾含量中等，切小朵焯水1分钟可去除部分钾，每次不超过100g，搭配其他低钾菜",
+    "nutrition": {
+      "calories": "36kcal",
+      "protein": "2.4g",
+      "potassium": "330mg",
+      "phosphorus": "56mg",
+      "sodium": "19mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "需焯水",
+      "需限量"
+    ]
+  },
+  {
+    "name": "炒冬瓜片",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "冬瓜几乎不含钾磷，利水消肿，切片清炒或煮汤均可，肾友可放心多吃",
+    "nutrition": {
+      "calories": "14kcal",
+      "protein": "0.4g",
+      "potassium": "70mg",
+      "phosphorus": "12mg",
+      "sodium": "2mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "利水",
+      "低热量"
+    ]
+  },
+  {
+    "name": "凉拌藕片（焯水）",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "莲藕切片焯水后凉拌，钾含量较低，口感脆爽，加少量醋和香油调味即可",
+    "nutrition": {
+      "calories": "47kcal",
+      "protein": "1.2g",
+      "potassium": "180mg",
+      "phosphorus": "40mg",
+      "sodium": "120mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "凉菜",
+      "需焯水"
+    ]
+  },
+  {
+    "name": "清炒莴笋丝",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "莴笋（莴苣）低钾低磷，切丝快炒清脆爽口，也可凉拌，夏天开胃菜",
+    "nutrition": {
+      "calories": "15kcal",
+      "protein": "1.0g",
+      "potassium": "140mg",
+      "phosphorus": "26mg",
+      "sodium": "18mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "凉菜",
+      "夏季推荐"
+    ]
+  },
+  {
+    "name": "素炒丝瓜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "丝瓜是公认的肾友友好蔬菜，钾磷钠都极低，软嫩多汁，清炒或煮汤都好",
+    "nutrition": {
+      "calories": "22kcal",
+      "protein": "1.0g",
+      "potassium": "115mg",
+      "phosphorus": "25mg",
+      "sodium": "3mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "低钾低磷",
+      "软嫩"
+    ]
+  },
+  {
+    "name": "白灼菜心",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "菜心焯水后淋少量生抽和热油，比炒的更清淡，注意蘸料少盐",
+    "nutrition": {
+      "calories": "28kcal",
+      "protein": "1.6g",
+      "potassium": "190mg",
+      "phosphorus": "38mg",
+      "sodium": "130mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "白灼",
+      "清淡"
+    ]
+  },
+  {
+    "name": "清炒娃娃菜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "娃娃菜口感清甜，比大白菜更嫩，钾磷含量低，上汤或清炒皆宜",
+    "nutrition": {
+      "calories": "16kcal",
+      "protein": "1.3g",
+      "potassium": "160mg",
+      "phosphorus": "32mg",
+      "sodium": "28mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "家常菜",
+      "软嫩"
+    ]
+  },
+  {
+    "name": "丝瓜蛋花汤（少蛋）",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "丝瓜清甜做汤极佳，鸡蛋用半个打散成蛋花，清淡鲜美不油腻",
+    "nutrition": {
+      "calories": "55kcal",
+      "protein": "4.5g",
+      "potassium": "180mg",
+      "phosphorus": "70mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "汤品类",
+      "清淡",
+      "需限量"
+    ]
+  },
+  {
+    "name": "冬瓜海带汤（少海带）",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "冬瓜利水，海带含碘但钾较高需少量，不放肉纯素煮，海带切细丝点缀即可",
+    "nutrition": {
+      "calories": "35kcal",
+      "protein": "1.2g",
+      "potassium": "220mg",
+      "phosphorus": "38mg",
+      "sodium": "200mg"
+    },
+    "tags": [
+      "汤品类",
+      "利水",
+      "素汤"
+    ]
+  },
+  {
+    "name": "白菜粉丝汤",
+    "category": "汤品类",
+    "safeLevel": "safe",
+    "desc": "白菜搭配粉丝（粉条）煮清汤，低钾低磷低蛋白，是肾友经典安全汤品",
+    "nutrition": {
+      "calories": "55kcal",
+      "protein": "1.2g",
+      "potassium": "120mg",
+      "phosphorus": "25mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "汤品类",
+      "低钾低磷",
+      "素汤"
+    ]
+  },
+  {
+    "name": "萝卜丝鲫鱼汤（去油）",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "鲫鱼先煎后煮至奶白，加白萝卜丝同煮；喝汤为主、鱼肉少量（约50g），撇净浮油",
+    "nutrition": {
+      "calories": "105kcal",
+      "protein": "12g",
+      "potassium": "260mg",
+      "phosphorus": "150mg",
+      "sodium": "220mg"
+    },
+    "tags": [
+      "汤品类",
+      "优质蛋白",
+      "需去油"
+    ]
+  },
+  {
+    "name": "番茄蛋花汤（少盐）",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "番茄1/4个切碎煮出红汤，鸡蛋半个打散，出锅滴几滴香油，开胃但要控盐",
+    "nutrition": {
+      "calories": "62kcal",
+      "protein": "4.5g",
+      "potassium": "210mg",
+      "phosphorus": "68mg",
+      "sodium": "200mg"
+    },
+    "tags": [
+      "汤品类",
+      "开胃",
+      "需限量"
+    ]
+  },
+  {
+    "name": "黄瓜皮蛋汤（少量蛋）",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "黄瓜切片煮清汤，加半个皮蛋提味，清香解暑；皮蛋含钠高不放盐",
+    "nutrition": {
+      "calories": "58kcal",
+      "protein": "4.8g",
+      "potassium": "160mg",
+      "phosphorus": "75mg",
+      "sodium": "320mg"
+    },
+    "tags": [
+      "汤品类",
+      "解暑",
+      "不放盐"
+    ]
+  },
+  {
+    "name": "莲藕排骨汤（去油少肉）",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "莲藕健脾，排骨2-3小块焯水去血沫，炖煮2小时撇油，以吃藕喝汤为主",
+    "nutrition": {
+      "calories": "135kcal",
+      "protein": "10g",
+      "potassium": "320mg",
+      "phosphorus": "110mg",
+      "sodium": "200mg"
+    },
+    "tags": [
+      "汤品类",
+      "滋补",
+      "需焯水去油"
+    ]
+  },
+  {
+    "name": "白米饭（精米）",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "精制白米是肾友首选主食，低蛋白低钾低磷，每餐1-2两（100-150g熟重）",
+    "nutrition": {
+      "calories": "116kcal",
+      "protein": "2.6g",
+      "potassium": "30mg",
+      "phosphorus": "48mg",
+      "sodium": "2mg"
+    },
+    "tags": [
+      "主食类",
+      "精米",
+      "基础主食"
+    ]
+  },
+  {
+    "name": "白馒头",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "精制面粉制作，低钾低磷，一个中等大小约100g，适合做早餐或正餐主食",
+    "nutrition": {
+      "calories": "223kcal",
+      "protein": "7.0g",
+      "potassium": "88mg",
+      "phosphorus": "107mg",
+      "sodium": "165mg"
+    },
+    "tags": [
+      "主食类",
+      "发酵面食",
+      "早餐"
+    ]
+  },
+  {
+    "name": "白面条（煮软）",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "精制小麦面条煮软，少喝汤（面汤含磷高），搭配少量蔬菜即可",
+    "nutrition": {
+      "calories": "110kcal",
+      "protein": "3.5g",
+      "potassium": "28mg",
+      "phosphorus": "52mg",
+      "sodium": "160mg"
+    },
+    "tags": [
+      "主食类",
+      "面食",
+      "少喝面汤"
+    ]
+  },
+  {
+    "name": "白粥（大米熬烂）",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "白米粥易消化，适合食欲差或肠胃不适时食用，可搭配少量小菜（注意低钠）",
+    "nutrition": {
+      "calories": "46kcal",
+      "protein": "1.1g",
+      "potassium": "13mg",
+      "phosphorus": "20mg",
+      "sodium": "2mg"
+    },
+    "tags": [
+      "主食类",
+      "易消化",
+      "早餐"
+    ]
+  },
+  {
+    "name": "蒸红薯（少量）",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "红薯香甜但钾含量较高（约200mg/100g），每次建议不超过100g，替代部分主食",
+    "nutrition": {
+      "calories": "99kcal",
+      "protein": "1.1g",
+      "potassium": "200mg",
+      "phosphorus": "42mg",
+      "sodium": "28mg"
+    },
+    "tags": [
+      "主食类",
+      "杂粮替代",
+      "需限量"
+    ]
+  },
+  {
+    "name": "粉丝/粉条",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "粉丝几乎无蛋白低钾低磷，是肾友替代主食的好选择，可煮可炒可入汤",
+    "nutrition": {
+      "calories": "338kcal",
+      "protein": "0.5g",
+      "potassium": "18mg",
+      "phosphorus": "12mg",
+      "sodium": "10mg"
+    },
+    "tags": [
+      "主食类",
+      "低蛋白",
+      "主食替代"
+    ]
+  },
+  {
+    "name": "藕粉（冲泡）",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "纯藕粉冲调成糊状，低蛋白易消化，适合加餐或食欲不佳时食用，不加糖更佳",
+    "nutrition": {
+      "calories": "372kcal",
+      "protein": "0.2g",
+      "potassium": "18mg",
+      "phosphorus": "15mg",
+      "sodium": "10mg"
+    },
+    "tags": [
+      "主食类",
+      "加餐",
+      "流质"
+    ]
+  },
+  {
+    "name": "白面包片（精制）",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "精制白吐司低钾低磷，早餐方便选择，注意选无添加坚果杂粮的原味白面包",
+    "nutrition": {
+      "calories": "265kcal",
+      "protein": "8.5g",
+      "potassium": "100mg",
+      "phosphorus": "95mg",
+      "sodium": "380mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "方便"
+    ]
+  },
+  {
+    "name": "清蒸鸡胸肉",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "鸡胸肉是低脂优质蛋白首选，蒸熟后撕成丝或切片，每餐50-75g为宜",
+    "nutrition": {
+      "calories": "133kcal",
+      "protein": "25g",
+      "potassium": "250mg",
+      "phosphorus": "200mg",
+      "sodium": "40mg"
+    },
+    "tags": [
+      "肉类",
+      "优质蛋白",
+      "低脂"
+    ]
+  },
+  {
+    "name": "白灼虾（少量）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "虾是优质蛋白但磷含量偏高，建议每次不超过5-6只（约50g），水煮白灼最健康",
+    "nutrition": {
+      "calories": "93kcal",
+      "protein": "19g",
+      "potassium": "220mg",
+      "phosphorus": "230mg",
+      "sodium": "140mg"
+    },
+    "tags": [
+      "肉类",
+      "水产",
+      "需限量"
+    ]
+  },
+  {
+    "name": "瘦肉炒丝瓜",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "瘦猪肉50g切薄片搭配丝瓜200g同炒，丝瓜清淡中和肉的油腻，荤素搭配合理",
+    "nutrition": {
+      "calories": "110kcal",
+      "protein": "12g",
+      "potassium": "250mg",
+      "phosphorus": "120mg",
+      "sodium": "120mg"
+    },
+    "tags": [
+      "肉类",
+      "荤素搭配",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "清蒸鳕鱼",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "鳕鱼高蛋白低脂肪磷适中，清蒸淋少许豉油，肉质细嫩易消化，老少皆宜",
+    "nutrition": {
+      "calories": "88kcal",
+      "protein": "20g",
+      "potassium": "280mg",
+      "phosphorus": "190mg",
+      "sodium": "120mg"
+    },
+    "tags": [
+      "肉类",
+      "水产",
+      "优质蛋白",
+      "清蒸"
+    ]
+  },
+  {
+    "name": "鸡蛋羹（蒸水蛋）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "1个鸡蛋加1.5倍温水蒸成水蛋，软嫩易消化，CKD3期以上建议隔日1个，控磷",
+    "nutrition": {
+      "calories": "75kcal",
+      "protein": "7g",
+      "potassium": "130mg",
+      "phosphorus": "120mg",
+      "sodium": "130mg"
+    },
+    "tags": [
+      "肉类",
+      "蛋品",
+      "易消化",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清炖乌鸡汤（去油）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "乌鸡小块焯水后慢炖1.5小时，撇净浮油只喝汤吃少量肉，可加姜片去腥，不放中药",
+    "nutrition": {
+      "calories": "140kcal",
+      "protein": "16g",
+      "potassium": "290mg",
+      "phosphorus": "160mg",
+      "sodium": "220mg"
+    },
+    "tags": [
+      "肉类",
+      "汤品",
+      "滋补",
+      "需去油"
+    ]
+  },
+  {
+    "name": "冬瓜虾仁汤",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "冬瓜片煮清汤，虾仁5-6只开背去虾线下锅，鲜味足磷稍高，控量即可",
+    "nutrition": {
+      "calories": "55kcal",
+      "protein": "8g",
+      "potassium": "160mg",
+      "phosphorus": "130mg",
+      "sodium": "200mg"
+    },
+    "tags": [
+      "肉类",
+      "水产",
+      "汤品",
+      "需限量"
+    ]
+  },
+  {
+    "name": "白菜肉丝",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "瘦猪肉丝40g搭配白菜丝200g快炒，白菜稀释肉的磷钾，清淡家常",
+    "nutrition": {
+      "calories": "95kcal",
+      "protein": "9g",
+      "potassium": "220mg",
+      "phosphorus": "90mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "肉类",
+      "荤素搭配",
+      "家常菜"
+    ]
+  },
+  {
+    "name": "黄瓜炒肉片",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "里脊薄片40g配黄瓜片200g快炒，黄瓜清脆解腻，整道菜清爽可口",
+    "nutrition": {
+      "calories": "85kcal",
+      "protein": "9.5g",
+      "potassium": "200mg",
+      "phosphorus": "95mg",
+      "sodium": "120mg"
+    },
+    "tags": [
+      "肉类",
+      "快手菜",
+      "夏季推荐"
+    ]
+  },
+  {
+    "name": "白切鸭胸肉（去皮）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "鸭胸肉比鸡肉稍肥腻，去皮后白切，蛋白质丰富但铁和磷偏高，每次不超过60g",
+    "nutrition": {
+      "calories": "115kcal",
+      "protein": "20g",
+      "potassium": "260mg",
+      "phosphorus": "180mg",
+      "sodium": "75mg"
+    },
+    "tags": [
+      "肉类",
+      "优质蛋白",
+      "去皮",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清蒸草鱼",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "草鱼中段蒸熟，淋少许蒸鱼豉油和葱姜丝，淡水鱼性价比高，每餐60-80g",
+    "nutrition": {
+      "calories": "113kcal",
+      "protein": "17g",
+      "potassium": "290mg",
+      "phosphorus": "200mg",
+      "sodium": "100mg"
+    },
+    "tags": [
+      "肉类",
+      "水产",
+      "清蒸",
+      "家常"
+    ]
+  },
+  {
+    "name": "凉拌豆腐（嫩豆腐）",
+    "category": "豆制品",
+    "safeLevel": "warning",
+    "desc": "嫩豆腐100g（半盒）焯水后加少量生抽、葱花、香油凉拌，植物蛋白适量",
+    "nutrition": {
+      "calories": "70kcal",
+      "protein": "6g",
+      "potassium": "150mg",
+      "phosphorus": "95mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "豆制品",
+      "凉菜",
+      "需限量"
+    ]
+  },
+  {
+    "name": "豆腐丝瓜汤",
+    "category": "豆制品",
+    "safeLevel": "warning",
+    "desc": "丝瓜200g配嫩豆腐80g煮清汤，丝瓜低钾中和豆腐的磷，清淡不腻",
+    "nutrition": {
+      "calories": "62kcal",
+      "protein": "5g",
+      "potassium": "180mg",
+      "phosphorus": "85mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "豆制品",
+      "汤品",
+      "需限量"
+    ]
+  },
+  {
+    "name": "千张炒白菜",
+    "category": "豆制品",
+    "safeLevel": "warning",
+    "desc": "千张（干豆腐皮）50g切细丝配白菜快炒，千张含植物蛋白但磷偏高，少量食用",
+    "nutrition": {
+      "calories": "105kcal",
+      "protein": "8g",
+      "potassium": "190mg",
+      "phosphorus": "130mg",
+      "sodium": "200mg"
+    },
+    "tags": [
+      "豆制品",
+      "家常菜",
+      "需限量"
+    ]
+  },
+  {
+    "name": "豆浆（冲淡饮用）",
+    "category": "豆制品",
+    "safeLevel": "warning",
+    "desc": "自制豆浆按1:3比例冲淡饮用200ml，植物蛋白饮品，CKD3期以上每日不超过1杯",
+    "nutrition": {
+      "calories": "55kcal",
+      "protein": "3.5g",
+      "potassium": "180mg",
+      "phosphorus": "70mg",
+      "sodium": "5mg"
+    },
+    "tags": [
+      "豆制品",
+      "饮品",
+      "需限量",
+      "早餐"
+    ]
+  },
+  {
+    "name": "雪梨（生吃）",
+    "category": "水果类",
+    "safeLevel": "safe",
+    "desc": "梨是低钾水果首选之一，水分足润燥，每次半个到一个（约150g）即可",
+    "nutrition": {
+      "calories": "51kcal",
+      "protein": "0.3g",
+      "potassium": "85mg",
+      "phosphorus": "12mg",
+      "sodium": "2mg"
+    },
+    "tags": [
+      "水果类",
+      "低钾水果",
+      "润燥"
+    ]
+  },
+  {
+    "name": "葡萄（少量）",
+    "category": "水果类",
+    "safeLevel": "safe",
+    "desc": "葡萄钾含量中等偏低，每次一小串约100g，注意控制量避免水分过多",
+    "nutrition": {
+      "calories": "45kcal",
+      "protein": "0.5g",
+      "potassium": "130mg",
+      "phosphorus": "17mg",
+      "sodium": "1mg"
+    },
+    "tags": [
+      "水果类",
+      "加餐",
+      "低钾"
+    ]
+  },
+  {
+    "name": "草莓",
+    "category": "水果类",
+    "safeLevel": "safe",
+    "desc": "草莓钾含量不高，维生素C丰富，每次约8-10颗（100g），清洗干净直接食用",
+    "nutrition": {
+      "calories": "32kcal",
+      "protein": "0.8g",
+      "potassium": "150mg",
+      "phosphorus": "23mg",
+      "sodium": "1mg"
+    },
+    "tags": [
+      "水果类",
+      "富含维C",
+      "加餐"
+    ]
+  },
+  {
+    "name": "蓝莓",
+    "category": "水果类",
+    "safeLevel": "safe",
+    "desc": "蓝莓钾低且抗氧化物质丰富，每次一小把约30-50g，适合做加餐小食",
+    "nutrition": {
+      "calories": "57kcal",
+      "protein": "0.7g",
+      "potassium": "77mg",
+      "phosphorus": "12mg",
+      "sodium": "1mg"
+    },
+    "tags": [
+      "水果类",
+      "抗氧化",
+      "加餐"
+    ]
+  },
+  {
+    "name": "火龙果（白心）",
+    "category": "水果类",
+    "safeLevel": "safe",
+    "desc": "白心火龙果钾含量较低，膳食纤维丰富通便，每次半个约150g",
+    "nutrition": {
+      "calories": "50kcal",
+      "protein": "1.0g",
+      "potassium": "130mg",
+      "phosphorus": "28mg",
+      "sodium": "2mg"
+    },
+    "tags": [
+      "水果类",
+      "通便",
+      "低钾"
+    ]
+  },
+  {
+    "name": "菠萝（少量）",
+    "category": "水果类",
+    "safeLevel": "warning",
+    "desc": "菠萝钾含量中等，用盐水浸泡后食用，每次不超过100g，避免空腹吃",
+    "nutrition": {
+      "calories": "44kcal",
+      "protein": "0.5g",
+      "potassium": "150mg",
+      "phosphorus": "12mg",
+      "sodium": "1mg"
+    },
+    "tags": [
+      "水果类",
+      "需限量",
+      "助消化"
+    ]
+  },
+  {
+    "name": "水煮蛋（整蛋）",
+    "category": "蛋奶类",
+    "safeLevel": "warning",
+    "desc": "整蛋营养完整但蛋黄磷偏高，CKD1-2期每天1个，3期以上建议隔日1个或只吃蛋白",
+    "nutrition": {
+      "calories": "144kcal",
+      "protein": "13g",
+      "potassium": "150mg",
+      "phosphorus": "200mg",
+      "sodium": "130mg"
+    },
+    "tags": [
+      "蛋奶类",
+      "优质蛋白",
+      "早餐",
+      "需限量"
+    ]
+  },
+  {
+    "name": "鸡蛋白（蛋清）",
+    "category": "蛋奶类",
+    "safeLevel": "safe",
+    "desc": "蛋清是肾友最优质的纯蛋白来源，几乎无磷无钾，每天2个蛋清可提供约7g优质蛋白",
+    "nutrition": {
+      "calories": "50kcal",
+      "protein": "11g",
+      "potassium": "50mg",
+      "phosphorus": "15mg",
+      "sodium": "80mg"
+    },
+    "tags": [
+      "蛋奶类",
+      "优质蛋白",
+      "极低磷",
+      "推荐"
+    ]
+  },
+  {
+    "name": "牛奶（低脂，限量）",
+    "category": "蛋奶类",
+    "safeLevel": "warning",
+    "desc": "低脂牛奶含优质蛋白和钙但磷偏高，CKD3期以上每日不超过100-150ml，或选用低磷奶粉",
+    "nutrition": {
+      "calories": "52kcal",
+      "protein": "3.4g",
+      "potassium": "160mg",
+      "phosphorus": "95mg",
+      "sodium": "55mg"
+    },
+    "tags": [
+      "蛋奶类",
+      "补钙",
+      "需限量"
+    ]
+  },
+  {
+    "name": "冰糖炖雪梨（少糖）",
+    "category": "甜品",
+    "safeLevel": "safe",
+    "desc": "雪梨去核加少量冰糖隔水蒸20分钟，润肺止咳，糖少放，糖尿病肾友不加糖",
+    "nutrition": {
+      "calories": "75kcal",
+      "protein": "0.4g",
+      "potassium": "95mg",
+      "phosphorus": "14mg",
+      "sodium": "3mg"
+    },
+    "tags": [
+      "甜品",
+      "润肺",
+      "加餐"
+    ]
+  },
+  {
+    "name": "蒸苹果",
+    "category": "甜品",
+    "safeLevel": "safe",
+    "desc": "苹果去核切块蒸10分钟至软，酸甜温和，易消化，适合老人或胃口差时",
+    "nutrition": {
+      "calories": "52kcal",
+      "protein": "0.3g",
+      "potassium": "107mg",
+      "phosphorus": "11mg",
+      "sodium": "1mg"
+    },
+    "tags": [
+      "甜品",
+      "易消化",
+      "加餐"
+    ]
+  },
+  {
+    "name": "藕粉糊（无糖）",
+    "category": "甜品",
+    "safeLevel": "safe",
+    "desc": "纯藕粉用沸水冲调成半透明糊状，低蛋白易消化，加餐或流质饮食首选",
+    "nutrition": {
+      "calories": "350kcal",
+      "protein": "0.2g",
+      "potassium": "15mg",
+      "phosphorus": "12mg",
+      "sodium": "5mg"
+    },
+    "tags": [
+      "甜品",
+      "加餐",
+      "流质",
+      "极低蛋白"
+    ]
+  },
+  {
+    "name": "红薯粉丝糖水（少糖）",
+    "category": "甜品",
+    "safeLevel": "safe",
+    "desc": "红薯粉丝煮软加少量冰糖或不放糖，口感Q弹，低蛋白甜品小食",
+    "nutrition": {
+      "calories": "120kcal",
+      "protein": "0.3g",
+      "potassium": "20mg",
+      "phosphorus": "10mg",
+      "sodium": "8mg"
+    },
+    "tags": [
+      "甜品",
+      "加餐",
+      "低蛋白"
+    ]
+  },
+  {
+    "name": "小米粥",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "小米熬烂成粥，易消化，适合早餐，搭配鸡蛋或小菜",
+    "nutrition": {
+      "calories": "46kcal",
+      "protein": "0.9g",
+      "potassium": "78mg",
+      "phosphorus": "22mg",
+      "sodium": "4mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "易消化"
+    ]
+  },
+  {
+    "name": "糙米饭",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "糙米保留胚芽营养但磷钾比精米高，可与白米按1:2混合煮，每次不超过100g",
+    "nutrition": {
+      "calories": "110kcal",
+      "protein": "2.6g",
+      "potassium": "103mg",
+      "phosphorus": "110mg",
+      "sodium": "3mg"
+    },
+    "tags": [
+      "主食类",
+      "杂粮",
+      "需限量"
+    ]
+  },
+  {
+    "name": "荞麦面",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "荞麦面比精面营养丰富但磷钾稍高，每次100g左右，少喝汤",
+    "nutrition": {
+      "calories": "92kcal",
+      "protein": "3.3g",
+      "potassium": "121mg",
+      "phosphorus": "74mg",
+      "sodium": "47mg"
+    },
+    "tags": [
+      "主食类",
+      "面食",
+      "需限量"
+    ]
+  },
+  {
+    "name": "全麦面包",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "全麦面粉制作，比白面包营养丰富但磷钾稍高，每次1-2片（约60g）",
+    "nutrition": {
+      "calories": "165kcal",
+      "protein": "5.5g",
+      "potassium": "128mg",
+      "phosphorus": "100mg",
+      "sodium": "170mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "需限量"
+    ]
+  },
+  {
+    "name": "玉米（蒸）",
+    "category": "主食类",
+    "safeLevel": "safe",
+    "desc": "甜玉米蒸熟直接食用，钾含量中等偏低，每次半根到1根（约100g）",
+    "nutrition": {
+      "calories": "112kcal",
+      "protein": "4g",
+      "potassium": "238mg",
+      "phosphorus": "117mg",
+      "sodium": "2mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "杂粮"
+    ]
+  },
+  {
+    "name": "黑米粥",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "黑米熬烂成粥，营养丰富但磷钾稍高，每次1小碗（约150ml），可与白米混合煮",
+    "nutrition": {
+      "calories": "46kcal",
+      "protein": "1.3g",
+      "potassium": "87mg",
+      "phosphorus": "26mg",
+      "sodium": "3mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "需限量"
+    ]
+  },
+  {
+    "name": "绿豆粥",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "绿豆少量熬粥，清热解暑但绿豆磷钾偏高，每次1小碗（150ml），绿豆少放",
+    "nutrition": {
+      "calories": "46kcal",
+      "protein": "1.2g",
+      "potassium": "78mg",
+      "phosphorus": "30mg",
+      "sodium": "3mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "需限量"
+    ]
+  },
+  {
+    "name": "红豆薏米粥（少红豆）",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "红豆薏米少量熬粥，祛湿但豆类磷钾偏高，薏米多红豆少，每次1小碗",
+    "nutrition": {
+      "calories": "46kcal",
+      "protein": "1.1g",
+      "potassium": "75mg",
+      "phosphorus": "32mg",
+      "sodium": "3mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "需限量"
+    ]
+  },
+  {
+    "name": "燕麦粥",
+    "category": "主食类",
+    "safeLevel": "warning",
+    "desc": "燕麦片煮成粥，膳食纤维丰富但磷钾稍高，每次1小碗（约30g燕麦片）",
+    "nutrition": {
+      "calories": "150kcal",
+      "protein": "5g",
+      "potassium": "150mg",
+      "phosphorus": "130mg",
+      "sodium": "4mg"
+    },
+    "tags": [
+      "主食类",
+      "早餐",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清炒油麦菜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "油麦菜快炒断生，钾磷含量低，清淡爽口，适合各期肾友",
+    "nutrition": {
+      "calories": "20kcal",
+      "protein": "1.5g",
+      "potassium": "100mg",
+      "phosphorus": "25mg",
+      "sodium": "20mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "快手菜",
+      "低热量"
+    ]
+  },
+  {
+    "name": "蒜蓉西兰花",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "西兰花切小朵焯水1分钟，蒜蓉爆香后快炒，每次不超过100g",
+    "nutrition": {
+      "calories": "36kcal",
+      "protein": "2.4g",
+      "potassium": "330mg",
+      "phosphorus": "56mg",
+      "sodium": "19mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "需焯水",
+      "需限量"
+    ]
+  },
+  {
+    "name": "番茄炒蛋",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "番茄1/2个切小块炒出汁，鸡蛋1个打散炒熟混合，注意控盐和量",
+    "nutrition": {
+      "calories": "90kcal",
+      "protein": "5g",
+      "potassium": "180mg",
+      "phosphorus": "80mg",
+      "sodium": "160mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "家常菜",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清炒豆芽",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "绿豆芽低钾低磷低钠，水分足口感脆，快炒1分钟即可出锅",
+    "nutrition": {
+      "calories": "16kcal",
+      "protein": "1.1g",
+      "potassium": "68mg",
+      "phosphorus": "22mg",
+      "sodium": "7mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "低钾",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "清炒菠菜",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "菠菜焯水2分钟去部分钾，快炒断生，每次不超过100g",
+    "nutrition": {
+      "calories": "28kcal",
+      "protein": "2.6g",
+      "potassium": "311mg",
+      "phosphorus": "47mg",
+      "sodium": "85mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "需焯水",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清炒莴笋",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "莴笋（莴苣）低钾低磷，切丝快炒清脆爽口，也可凉拌",
+    "nutrition": {
+      "calories": "15kcal",
+      "protein": "1.0g",
+      "potassium": "140mg",
+      "phosphorus": "26mg",
+      "sodium": "18mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "凉菜",
+      "夏季推荐"
+    ]
+  },
+  {
+    "name": "清炒生菜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "生菜钾磷极低，蒜蓉爆香后快炒断生即可，清淡爽口",
+    "nutrition": {
+      "calories": "20kcal",
+      "protein": "1.2g",
+      "potassium": "120mg",
+      "phosphorus": "25mg",
+      "sodium": "40mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "低热量",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "凉拌木耳",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "木耳泡发焯水后凉拌，钾含量中等偏高，每次不超过50g干木耳泡发",
+    "nutrition": {
+      "calories": "27kcal",
+      "protein": "1.5g",
+      "potassium": "260mg",
+      "phosphorus": "50mg",
+      "sodium": "10mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "凉菜",
+      "需焯水"
+    ]
+  },
+  {
+    "name": "清炒空心菜",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "空心菜焯水后快炒，钾含量中等偏高，每次不超过100g",
+    "nutrition": {
+      "calories": "20kcal",
+      "protein": "2.2g",
+      "potassium": "243mg",
+      "phosphorus": "38mg",
+      "sodium": "94mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "需焯水",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清炒藕片",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "莲藕切片焯水后清炒，钾含量较低，口感脆爽",
+    "nutrition": {
+      "calories": "47kcal",
+      "protein": "1.2g",
+      "potassium": "180mg",
+      "phosphorus": "40mg",
+      "sodium": "120mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "快手菜",
+      "需焯水"
+    ]
+  },
+  {
+    "name": "红烧冬瓜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "冬瓜切小块红烧，少油少盐，钾磷极低，利水消肿",
+    "nutrition": {
+      "calories": "25kcal",
+      "protein": "0.6g",
+      "potassium": "90mg",
+      "phosphorus": "18mg",
+      "sodium": "200mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "家常菜",
+      "利水"
+    ]
+  },
+  {
+    "name": "清炒西葫芦",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "西葫芦钾磷含量都很低，快炒即可保留口感和营养",
+    "nutrition": {
+      "calories": "22kcal",
+      "protein": "1.2g",
+      "potassium": "145mg",
+      "phosphorus": "33mg",
+      "sodium": "8mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "快手菜"
+    ]
+  },
+  {
+    "name": "清炒芦笋",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "芦笋焯水后清炒，钾含量中等偏高，每次不超过100g",
+    "nutrition": {
+      "calories": "27kcal",
+      "protein": "2.2g",
+      "potassium": "270mg",
+      "phosphorus": "52mg",
+      "sodium": "3mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "需焯水",
+      "需限量"
+    ]
+  },
+  {
+    "name": "凉拌海带丝",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "海带丝泡发焯水后凉拌，含碘但钾较高需少量，每次不超过50g",
+    "nutrition": {
+      "calories": "12kcal",
+      "protein": "1.1g",
+      "potassium": "222mg",
+      "phosphorus": "36mg",
+      "sodium": "350mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "凉菜",
+      "需限量"
+    ]
+  },
+  {
+    "name": "凉拌苦瓜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "苦瓜切片焯水后凉拌，清热解暑，钾磷含量较低",
+    "nutrition": {
+      "calories": "22kcal",
+      "protein": "1.0g",
+      "potassium": "256mg",
+      "phosphorus": "35mg",
+      "sodium": "2.5mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "凉菜",
+      "夏季推荐"
+    ]
+  },
+  {
+    "name": "红烧茄子",
+    "category": "蔬菜类",
+    "safeLevel": "warning",
+    "desc": "茄子切小块少油红烧，钾含量中等，每次不超过150g，注意控盐",
+    "nutrition": {
+      "calories": "45kcal",
+      "protein": "1.5g",
+      "potassium": "220mg",
+      "phosphorus": "30mg",
+      "sodium": "250mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "家常菜",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清炒小白菜",
+    "category": "蔬菜类",
+    "safeLevel": "safe",
+    "desc": "小白菜口感清甜，钾磷含量低，快炒断生即可",
+    "nutrition": {
+      "calories": "15kcal",
+      "protein": "1.5g",
+      "potassium": "178mg",
+      "phosphorus": "26mg",
+      "sodium": "73mg"
+    },
+    "tags": [
+      "蔬菜类",
+      "家常菜",
+      "软嫩"
+    ]
+  },
+  {
+    "name": "清蒸鲈鱼",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "淡水鱼优质蛋白来源，脂肪含量低，清蒸烹饪最健康，每餐60-80g",
+    "nutrition": {
+      "calories": "105kcal",
+      "protein": "18g",
+      "potassium": "290mg",
+      "phosphorus": "210mg",
+      "sodium": "80mg"
+    },
+    "tags": [
+      "肉类",
+      "优质蛋白",
+      "清蒸"
+    ]
+  },
+  {
+    "name": "清蒸带鱼（适量）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "带鱼清蒸淋少许豉油，优质蛋白但钠含量中等，每次不超过60g",
+    "nutrition": {
+      "calories": "127kcal",
+      "protein": "17.7g",
+      "potassium": "280mg",
+      "phosphorus": "191mg",
+      "sodium": "150mg"
+    },
+    "tags": [
+      "肉类",
+      "水产",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清蒸虾（去皮）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "虾是优质蛋白但磷含量偏高，建议每次不超过5-6只（约50g），水煮白灼",
+    "nutrition": {
+      "calories": "93kcal",
+      "protein": "19g",
+      "potassium": "220mg",
+      "phosphorus": "230mg",
+      "sodium": "140mg"
+    },
+    "tags": [
+      "肉类",
+      "水产",
+      "需限量"
+    ]
+  },
+  {
+    "name": "清蒸银鲳鱼",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "银鲳鱼清蒸肉质细嫩，优质蛋白低脂肪，每次60-80g",
+    "nutrition": {
+      "calories": "140kcal",
+      "protein": "18.5g",
+      "potassium": "328mg",
+      "phosphorus": "155mg",
+      "sodium": "62mg"
+    },
+    "tags": [
+      "肉类",
+      "水产",
+      "优质蛋白"
+    ]
+  },
+  {
+    "name": "清蒸鳕鱼",
+    "category": "肉类",
+    "safeLevel": "safe",
+    "desc": "鳕鱼高蛋白低脂肪磷适中，清蒸淋少许豉油，肉质细嫩易消化",
+    "nutrition": {
+      "calories": "88kcal",
+      "protein": "20g",
+      "potassium": "280mg",
+      "phosphorus": "190mg",
+      "sodium": "120mg"
+    },
+    "tags": [
+      "肉类",
+      "水产",
+      "优质蛋白"
+    ]
+  },
+  {
+    "name": "葱爆牛肉（适量）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "瘦牛肉50g切薄片配大葱快炒，优质蛋白但磷钾偏高，少量食用",
+    "nutrition": {
+      "calories": "125kcal",
+      "protein": "15g",
+      "potassium": "210mg",
+      "phosphorus": "165mg",
+      "sodium": "65mg"
+    },
+    "tags": [
+      "肉类",
+      "优质蛋白",
+      "需限量"
+    ]
+  },
+  {
+    "name": "番茄炖牛腩（适量）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "牛腩50g配番茄200g慢炖，牛腩优质蛋白但磷钾偏高，少量食用",
+    "nutrition": {
+      "calories": "140kcal",
+      "protein": "14g",
+      "potassium": "280mg",
+      "phosphorus": "135mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "肉类",
+      "炖菜",
+      "需限量"
+    ]
+  },
+  {
+    "name": "蘑菇炖鸡（去皮）",
+    "category": "肉类",
+    "safeLevel": "warning",
+    "desc": "去皮鸡肉50g配蘑菇100g炖煮，鸡肉优质蛋白但蘑菇钾稍高，适量食用",
+    "nutrition": {
+      "calories": "110kcal",
+      "protein": "14g",
+      "potassium": "260mg",
+      "phosphorus": "130mg",
+      "sodium": "100mg"
+    },
+    "tags": [
+      "肉类",
+      "炖菜",
+      "需限量"
+    ]
+  },
+  {
+    "name": "炖鸡汤（去皮）配冬瓜",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "去皮鸡肉50g配冬瓜200g炖汤，撇净浮油，以吃冬瓜喝汤为主，鸡肉少量",
+    "nutrition": {
+      "calories": "80kcal",
+      "protein": "10g",
+      "potassium": "180mg",
+      "phosphorus": "90mg",
+      "sodium": "120mg"
+    },
+    "tags": [
+      "汤品类",
+      "需限量",
+      "需去油"
+    ]
+  },
+  {
+    "name": "清炖排骨汤",
+    "category": "汤品类",
+    "safeLevel": "warning",
+    "desc": "排骨30g焯水后慢炖，撇净浮油，可加冬瓜或萝卜，以喝汤为主，排骨少量",
+    "nutrition": {
+      "calories": "100kcal",
+      "protein": "8g",
+      "potassium": "200mg",
+      "phosphorus": "95mg",
+      "sodium": "150mg"
+    },
+    "tags": [
+      "汤品类",
+      "需限量",
+      "需去油"
+    ]
+  },
+  {
+    "name": "凉拌豆腐",
+    "category": "豆制品",
+    "safeLevel": "warning",
+    "desc": "嫩豆腐100g焯水后加少量生抽、葱花、香油凉拌，植物蛋白适量",
+    "nutrition": {
+      "calories": "70kcal",
+      "protein": "6g",
+      "potassium": "150mg",
+      "phosphorus": "95mg",
+      "sodium": "180mg"
+    },
+    "tags": [
+      "豆制品",
+      "凉菜",
+      "需限量"
+    ]
+  },
+  {
+    "name": "茶叶蛋",
+    "category": "蛋奶类",
+    "safeLevel": "warning",
+    "desc": "鸡蛋用茶叶和香料卤制，但钠含量比水煮蛋高，CKD3期以上建议隔日1个",
+    "nutrition": {
+      "calories": "151kcal",
+      "protein": "13g",
+      "potassium": "150mg",
+      "phosphorus": "200mg",
+      "sodium": "270mg"
+    },
+    "tags": [
+      "蛋奶类",
+      "早餐",
+      "需限量"
+    ]
+  },
+  {
+    "name": "新鲜水果",
+    "category": "水果类",
+    "safeLevel": "safe",
+    "desc": "选择低钾水果如苹果、梨、草莓等，每次150g左右，注意控制水分",
+    "nutrition": {
+      "calories": "50kcal",
+      "protein": "0.3g",
+      "potassium": "100mg",
+      "phosphorus": "10mg",
+      "sodium": "2mg"
+    },
+    "tags": [
+      "水果类",
+      "加餐",
+      "低钾"
+    ]
+  }
+]
