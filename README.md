@@ -54,7 +54,7 @@
 
 ## 📱 小程序码
 
-![肾友食光小程序码](https://raw.githubusercontent.com/yourusername/shenyou-shiguang/main/docs/images/gh_daadb417701b_258.jpg)
+![肾友食光小程序码](https://raw.githubusercontent.com/lzq603/kidney-diet-days/main/docs/images/gh_daadb417701b_258.jpg)
 
 ## 📖 使用说明
 
